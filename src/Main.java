@@ -38,34 +38,99 @@
 //}
 
 
+//class BankAccount {
+//    int balance = 0;
+//
+//    public void deposit(int amount) {
+//        balance += amount;
+//    }
+//    public void withdraw(int amount) {
+//        balance -= amount;
+//    }
+//    public void checkMyBalance() {
+//        System.out.println("잔액 : " + balance);
+//    }
+//}
+//
+//class Bank {
+//    public static void main(String[] args) {
+//        BankAccount yoon = new BankAccount();
+//        BankAccount park = new BankAccount();
+//
+//        yoon.deposit(5000);
+//        park.deposit(3000);
+//
+//        yoon.withdraw(2000);
+//        park.withdraw(2000);
+//
+//        yoon.checkMyBalance();
+//        park.checkMyBalance();
+//    }
+//}
+
+// p.163
+
+
+//class BankAccount {
+//    int balance = 0;
+//
+//    public int deposit(int amount) {
+//        balance += amount;
+//        return balance;
+//    }
+//    public int withdraw(int amount) {
+//        balance -= amount;
+//        return balance;
+//    }
+//    public int checkMyBalance() {
+//        System.out.println("잔액: " + balance);
+//        return balance;
+//    }
+//}
+//
+//class DupRef {
+//    public static void main(String[] args) {
+//        BankAccount ref1 = new BankAccount();
+//        BankAccount ref2 = ref1;
+//
+//        ref1.deposit(3000);
+//        ref2.deposit(2000);
+//        ref1.withdraw(400);
+//        ref2.withdraw(300);
+//        ref1.checkMyBalance();
+//        ref2.checkMyBalance();
+//    }
+//}
+
+
 class BankAccount {
     int balance = 0;
 
-    public void deposit(int amount) {
+    public int deposit(int amount) {
         balance += amount;
+        return balance;
     }
-    public void withdraw(int amount) {
+    public int withdraw(int amount) {
         balance -= amount;
+        return balance;
     }
-    public void checkMyBalance() {
-        System.out.println("잔액 : " + balance);
+    public int checkMyBalance() {
+        System.out.println("잔액: " + balance);
+        return balance;
     }
 }
 
-class Bank {
+class PassingRef {
     public static void main(String[] args) {
-        BankAccount yoon = new BankAccount();
-        BankAccount park = new BankAccount();
+        BankAccount ref = new BankAccount();
+        ref.deposit(3000);
+        ref.withdraw(300);
+        check(ref);
+    }
 
-        yoon.deposit(5000);
-        park.deposit(3000);
-
-        yoon.withdraw(2000);
-        park.withdraw(2000);
-
-        yoon.checkMyBalance();
-        park.checkMyBalance();
+    public static void check(BankAccount acc) {
+        acc.checkMyBalance();
     }
 }
 
-// p.163
+// p.166
