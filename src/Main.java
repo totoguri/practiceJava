@@ -136,20 +136,58 @@
 // p.166
 
 
-class FirstStringIntro {
-    public static void main(String[] args) {
-        String str1 = "happy";
-        String str2 = "birthday";
-        System.out.println(str1 + " " + str2);
+//class FirstStringIntro {
+//    public static void main(String[] args) {
+//        String str1 = "happy";
+//        String str2 = "birthday";
+//        System.out.println(str1 + " " + str2);
+//
+//        printString(str1);
+//        printString(" ");
+//        printString(str2);
+//        printString("\n");
+//        printString("Ënd of program! \n");
+//    }
+//
+//    public static void printString(String str) {
+//        System.out.print(str);
+//    }
+//}
 
-        printString(str1);
-        printString(" ");
-        printString(str2);
-        printString("\n");
-        printString("Ënd of program! \n");
+
+class BankAccount {
+    String accNumber;
+    String ssNumber;
+    int balance;
+
+    public BankAccount(String acc, String ss, int bal) {
+        accNumber = acc;
+        ssNumber = ss;
+        balance = bal;
     }
+    public void deposit(int amount) {
+        balance += amount;
+    }
+    public void withdraw(int amount) {
+        balance -= amount;
+    }
+    public void checkMyBalance() {
+        System.out.println("계좌번호: " + accNumber);
+        System.out.println("주민번호: " + ssNumber);
+        System.out.println("잔   액: " + balance + '\n');
+    }
+}
 
-    public static void printString(String str) {
-        System.out.print(str);
+class BankAccountUniID {
+    public static void main(String[] args) {
+        BankAccount yoon = new BankAccount("12-34-89", "990990-9090990", 10000);
+        BankAccount park = new BankAccount("33-55-09", "770088-5959007", 10000);
+
+        yoon.deposit(5000);
+        park.deposit(3000);
+        yoon.withdraw(2000);
+        park.withdraw(2000);
+        yoon.checkMyBalance();
+        park.checkMyBalance();
     }
 }
