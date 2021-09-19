@@ -155,39 +155,79 @@
 //}
 
 
-class BankAccount {
-    String accNumber;
-    String ssNumber;
-    int balance;
+//class BankAccount {
+//    String accNumber;
+//    String ssNumber;
+//    int balance;
+//
+//    public BankAccount(String acc, String ss, int bal) {
+//        accNumber = acc;
+//        ssNumber = ss;
+//        balance = bal;
+//    }
+//    public void deposit(int amount) {
+//        balance += amount;
+//    }
+//    public void withdraw(int amount) {
+//        balance -= amount;
+//    }
+//    public void checkMyBalance() {
+//        System.out.println("계좌번호: " + accNumber);
+//        System.out.println("주민번호: " + ssNumber);
+//        System.out.println("잔   액: " + balance + '\n');
+//    }
+//}
+//
+//class BankAccountUniID {
+//    public static void main(String[] args) {
+//        BankAccount yoon = new BankAccount("12-34-89", "990990-9090990", 10000);
+//        BankAccount park = new BankAccount("33-55-09", "770088-5959007", 10000);
+//
+//        yoon.deposit(5000);
+//        park.deposit(3000);
+//        yoon.withdraw(2000);
+//        park.withdraw(2000);
+//        yoon.checkMyBalance();
+//        park.checkMyBalance();
+//    }
+//}
 
-    public BankAccount(String acc, String ss, int bal) {
-        accNumber = acc;
-        ssNumber = ss;
-        balance = bal;
+
+// p.175
+
+
+class Circle {
+    private double rad = 0;
+    final double PI = 3.14;
+
+    public Circle(double r) {
+        setRad(r);
     }
-    public void deposit(int amount) {
-        balance += amount;
+    public void setRad(double r) {
+        if(r < 0) {
+            rad = 0;
+            return;
+        }
+        rad = r;
     }
-    public void withdraw(int amount) {
-        balance -= amount;
+    public double getRad() {
+        return rad;
     }
-    public void checkMyBalance() {
-        System.out.println("계좌번호: " + accNumber);
-        System.out.println("주민번호: " + ssNumber);
-        System.out.println("잔   액: " + balance + '\n');
+    public double getArea() {
+        return (rad*rad)*PI;
     }
 }
 
-class BankAccountUniID {
+class InfoHideCircle {
     public static void main(String[] args) {
-        BankAccount yoon = new BankAccount("12-34-89", "990990-9090990", 10000);
-        BankAccount park = new BankAccount("33-55-09", "770088-5959007", 10000);
+        Circle circle = new Circle(1.5);
+        System.out.println("반지름: " + circle.getRad());
+        System.out.println("넓 이: " + circle.getArea() + "\n");
 
-        yoon.deposit(5000);
-        park.deposit(3000);
-        yoon.withdraw(2000);
-        park.withdraw(2000);
-        yoon.checkMyBalance();
-        park.checkMyBalance();
+        circle.setRad(3.4);
+        System.out.println("반지름: " + circle.getRad());
+        System.out.println("넓 이: " + circle.getArea());
     }
 }
+
+// p.201
