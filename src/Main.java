@@ -196,38 +196,112 @@
 // p.175
 
 
-class Circle {
-    private double rad = 0;
-    final double PI = 3.14;
-
-    public Circle(double r) {
-        setRad(r);
-    }
-    public void setRad(double r) {
-        if(r < 0) {
-            rad = 0;
-            return;
-        }
-        rad = r;
-    }
-    public double getRad() {
-        return rad;
-    }
-    public double getArea() {
-        return (rad*rad)*PI;
-    }
-}
-
-class InfoHideCircle {
-    public static void main(String[] args) {
-        Circle circle = new Circle(1.5);
-        System.out.println("반지름: " + circle.getRad());
-        System.out.println("넓 이: " + circle.getArea() + "\n");
-
-        circle.setRad(3.4);
-        System.out.println("반지름: " + circle.getRad());
-        System.out.println("넓 이: " + circle.getArea());
-    }
-}
+//class Circle {
+//    private double rad = 0;
+//    final double PI = 3.14;
+//
+//    public Circle(double r) {
+//        setRad(r);
+//    }
+//    public void setRad(double r) {
+//        if(r < 0) {
+//            rad = 0;
+//            return;
+//        }
+//        rad = r;
+//    }
+//    public double getRad() {
+//        return rad;
+//    }
+//    public double getArea() {
+//        return (rad*rad)*PI;
+//    }
+//}
+//
+//class InfoHideCircle {
+//    public static void main(String[] args) {
+//        Circle circle = new Circle(1.5);
+//        System.out.println("반지름: " + circle.getRad());
+//        System.out.println("넓 이: " + circle.getArea() + "\n");
+//
+//        circle.setRad(3.4);
+//        System.out.println("반지름: " + circle.getRad());
+//        System.out.println("넓 이: " + circle.getArea());
+//    }
+//}
 
 // p.201
+
+
+//class SinusCap {
+//    void sniTake() {
+//        System.out.println("Kotmul");
+//    }
+//    void sneTake() {
+//        System.out.println("Jaechae");
+//    }
+//    void snuTake() {
+//        System.out.println("KoBbung");
+//    }
+//
+//    void take() {
+//        sniTake();
+//        sneTake();
+//        snuTake();
+//    }
+//}
+//
+//class ColdPatient {
+//    void takeSinus(SinusCap cap) {
+//        cap.take();
+//    }
+//}
+//
+//class OneClassEncapsulation {
+//    public static void main(String[] args) {
+//        ColdPatient suf = new ColdPatient();
+//        suf.takeSinus(new SinusCap());
+//    }
+//}
+
+
+class SinivelCap {
+    void take() {
+        System.out.println("Kotmul");
+    }
+}
+
+class SneezeCap {
+    void take() {
+        System.out.println("Jaechae");
+    }
+}
+
+class SnuffleCap {
+    void take() {
+        System.out.println("KoBbung");
+    }
+}
+
+class SinusCap {
+    SinivelCap siCap = new SinivelCap();
+    SneezeCap szCap = new SneezeCap();
+    SnuffleCap sfCap = new SnuffleCap();
+
+    void take() {
+        siCap.take(); szCap.take(); sfCap.take();
+    }
+}
+
+class ColdPatient {
+    void takeSinus(SinusCap cap) {
+        cap.take();
+    }
+}
+
+class CompEncapsulation {
+    public static void main(String[] args) {
+        ColdPatient suf = new ColdPatient();
+        suf.takeSinus(new SinusCap());
+    }
+}
