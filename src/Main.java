@@ -265,43 +265,169 @@
 //}
 
 
-class SinivelCap {
-    void take() {
-        System.out.println("Kotmul");
+//class SinivelCap {
+//    void take() {
+//        System.out.println("Kotmul");
+//    }
+//}
+//
+//class SneezeCap {
+//    void take() {
+//        System.out.println("Jaechae");
+//    }
+//}
+//
+//class SnuffleCap {
+//    void take() {
+//        System.out.println("KoBbung");
+//    }
+//}
+//
+//class SinusCap {
+//    SinivelCap siCap = new SinivelCap();
+//    SneezeCap szCap = new SneezeCap();
+//    SnuffleCap sfCap = new SnuffleCap();
+//
+//    void take() {
+//        siCap.take(); szCap.take(); sfCap.take();
+//    }
+//}
+//
+//class ColdPatient {
+//    void takeSinus(SinusCap cap) {
+//        cap.take();
+//    }
+//}
+//
+//class CompEncapsulation {
+//    public static void main(String[] args) {
+//        ColdPatient suf = new ColdPatient();
+//        suf.takeSinus(new SinusCap());
+//    }
+//}
+
+
+//import java.util.Scanner;
+//class ReadString {
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.print("문자열 입력: ");
+//        String str1 = sc.nextLine();
+//
+//        System.out.print("문자열 입력: ");
+//        String str2 = sc.nextLine();
+//
+//        System.out.printf("입력된 문자열 1: %s \n", str1);
+//        System.out.printf("입력된 문자열 2: %s \n", str2);
+//    }
+//}
+
+
+//class Box {
+//    private final String contents;
+//
+//    Box(String cont) {
+//        this.contents = cont;
+//    }
+//    public String toString() {
+//        return contents;
+//    }
+//}
+//
+//class BoxArray {
+//    public static void main(String[] args) {
+//        Box[] ar =new Box[3];
+//
+//        ar[0] = new Box("First");
+//        ar[1] = new Box("Second");
+//        ar[2] = new Box("Third");
+//
+//        System.out.println(ar[0]);
+//        System.out.println(ar[1]);
+//        System.out.println(ar[2]);
+//    }
+//}
+
+
+// p.312
+
+
+//class SuperCLS {
+//    public SuperCLS() {
+//        System.out.println("SuperCLS()");
+//    }
+//    public SuperCLS(int i) {
+//        System.out.println("SuperCLS(int i)");
+//    }
+//    public SuperCLS(int i, int j) {
+//        System.out.println("SuperCLS(int i, int j)");
+//    }
+//}
+//
+//class SubCLS extends SuperCLS {
+//    public SubCLS() {
+//        System.out.println("SubCLS()");
+//    }
+//    public SubCLS(int i) {
+//        super(i);
+//        System.out.println("SubCLS(int i)");
+//    }
+//    public SubCLS(int i, int j) {
+//        super(i, j);
+//        System.out.println("SubCLS(int i, int j)");
+//    }
+//}
+//
+//class SuperSub {
+//    public static void main(String[] args) {
+//        System.out.println("1. ");
+//        new SubCLS();
+//        System.out.println();
+//
+//        System.out.println("2. ");
+//        new SubCLS(1);
+//        System.out.println();
+//
+//        System.out.println("3. ");
+//        new SubCLS(1, 2);
+//        System.out.println();
+//    }
+//}
+
+
+class Man {
+    String name;
+
+    public Man(String name) {
+        this.name = name;
+    }
+    public void tellYourName() {
+        System.out.println("My name is " + name);
     }
 }
 
-class SneezeCap {
-    void take() {
-        System.out.println("Jaechae");
+class BusinessMan extends Man {
+    String company;
+    String position;
+
+    public BusinessMan(String name, String company, String position) {
+        super(name);
+        this.company = company;
+        this.position = position;
+    }
+    public void tellYourInfo() {
+        System.out.println("My company is " + company);
+        System.out.println("My position is " + position);
+        tellYourName();
     }
 }
 
-class SnuffleCap {
-    void take() {
-        System.out.println("KoBbung");
-    }
-}
-
-class SinusCap {
-    SinivelCap siCap = new SinivelCap();
-    SneezeCap szCap = new SneezeCap();
-    SnuffleCap sfCap = new SnuffleCap();
-
-    void take() {
-        siCap.take(); szCap.take(); sfCap.take();
-    }
-}
-
-class ColdPatient {
-    void takeSinus(SinusCap cap) {
-        cap.take();
-    }
-}
-
-class CompEncapsulation {
+class MyBusinessMan {
     public static void main(String[] args) {
-        ColdPatient suf = new ColdPatient();
-        suf.takeSinus(new SinusCap());
+        BusinessMan man = new BusinessMan("YOON", "Hybrid ELD", "Staff Eng.");
+        man.tellYourInfo();
     }
 }
+
+// p.328
