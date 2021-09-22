@@ -910,17 +910,278 @@
 //}
 
 
-class ExceptionMessage {
-    public static void md1(int n) {
-        md2(n, 0);
-    }
-    public static void md2(int n1, int n2) {
-        int r = n1/n2;
-    }
-    public static void main(String[] args) {
-        md1(3);
-        System.out.println("Good bye");
-    }
-}
+//class ExceptionMessage {
+//    public static void md1(int n) {
+//        md2(n, 0);
+//    }
+//    public static void md2(int n1, int n2) {
+//        int r = n1/n2;
+//    }
+//    public static void main(String[] args) {
+//        md1(3);
+//        System.out.println("Good bye");
+//    }
+//}
 
 // p.395
+
+
+//class ExceptionMessage {
+//    public static void md1(int n) {
+//        md2(n, 0);
+//    }
+//    public static void md2(int n1, int n2) {
+//        int r = n1/n2;
+//    }
+//    public static void main(String[] args) {
+//        try{
+//            md1(3);
+//        }
+//        catch(Throwable e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println("Good bye");
+//    }
+//}
+
+
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.nio.file.Files;
+//import java.io.BufferedWriter;
+//import java.io.IOException;
+//
+//class IoExceptionCase {
+//    public static void main(String[] args) {
+//        Path file = Paths.get("D:\\Programing\\practiceJava\\Simple.txt");
+//        BufferedWriter writer = null;
+//
+//        try {
+//            writer = Files.newBufferedWriter(file);
+//            writer.write('A');
+//            writer.write('Z');
+//
+//            if(writer != null)
+//                writer.close();
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//}
+
+
+//class Person {
+//    String name;
+//
+//    public Person(String name) {
+//        this.name = name;
+//    }
+//
+//    @Override
+//    protected void finalize() throws Throwable {
+//        super.finalize();
+//        System.out.println("destroyed: " + name);
+//    }
+//}
+//
+//class ObjectFinalize {
+//    public static void main(String[] args) {
+//        Person p1 = new Person("YOON");
+//        Person p2 = new Person("PARK");
+//        p1 = null;
+//        p2 = null;
+//
+//        System.out.println("end of program");
+//    }
+//}
+
+
+//class INum {
+//    private int num;
+//
+//    public INum(int num) {
+//        this.num = num;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(this.num == ((INum)obj).num)
+//            return true;
+//        else
+//            return false;
+//    }
+//}
+//
+//class ObjectEquality {
+//    public static void main(String[] args) {
+//        INum num1 = new INum(10);
+//        INum num2 = new INum(12);
+//        INum num3 = new INum(10);
+//
+//        if(num1.equals(num2))
+//            System.out.println("num1, num2 Equal");
+//        else
+//            System.out.println("num1, num2 Different");
+//
+//        if(num1.equals(num3))
+//            System.out.println("num1, num3 Equal");
+//        else
+//            System.out.println("num1, num3 Different");
+//    }
+//}
+
+
+//class StringEquality {
+//    public static void main(String[] args) {
+//        String str1 = new String("So Simple");
+//        String str2 = new String("So Simple");
+//
+//        if(str1 == str2)
+//            System.out.println("str1, str2 Reference the same");
+//        else
+//            System.out.println("str1, str2 Reference different");
+//
+//        if(str1.equals(str2))
+//            System.out.println("str1, str2 value the same");
+//        else
+//            System.out.println("str1, str2 value different");
+//    }
+//}
+
+
+//class Point implements Cloneable {
+//    private final int xPos;
+//    private final int yPos;
+//
+//    public Point(int x, int y) {
+//        this.xPos = x;
+//        this.yPos = y;
+//    }
+//
+//    public void showPosition() {
+//        System.out.printf("[%d, %d]", xPos, yPos);
+//        System.out.println();
+//    }
+//
+//    @Override
+//    public Object clone() throws CloneNotSupportedException {
+//        return super.clone();
+//    }
+//}
+//
+//class InstanceCloning {
+//    public static void main(String[] args) {
+//        Point org = new Point(3, 5);
+//        Point cpy;
+//
+//        try {
+//            cpy = (Point)org.clone();
+//            org.showPosition();
+//            cpy.showPosition();
+//        }
+//        catch(CloneNotSupportedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//}
+
+
+//class Point implements Cloneable {
+//    private int xPos;
+//    private int yPos;
+//
+//    public Point(int x, int y) {
+//        this.xPos = x;
+//        this.yPos = y;
+//    }
+//
+//    public void showPosition() {
+//        System.out.printf("[%d, %d]", xPos, yPos);
+//        System.out.println();
+//    }
+//
+//    public void changePos(int x, int y) {
+//        this.xPos = x;
+//        this.yPos = y;
+//    }
+//
+//    @Override
+//    public Object clone() throws CloneNotSupportedException {
+//        return super.clone();
+//    }
+//}
+//
+//class Rectangle implements Cloneable {
+//    private Point upperLeft;
+//    private Point lowerRight;
+//
+//    public Rectangle(int x1, int y1, int x2, int y2) {
+//        this.upperLeft = new Point(x1, y1);
+//        this.lowerRight = new Point(x2, y2);
+//    }
+//
+//    public void changePos(int x1, int y1, int x2, int y2) {
+//        this.upperLeft.changePos(x1, y1);
+//        this.lowerRight.changePos(x2, y2);
+//    }
+//
+//    @Override
+//    public Object clone() throws CloneNotSupportedException {
+//        Rectangle copy = (Rectangle)super.clone();
+//
+//        copy.upperLeft = (Point)upperLeft.clone();
+//        copy.lowerRight = (Point)lowerRight.clone();
+//
+//        return copy;
+//    }
+//
+//    public void showPosition() {
+//        System.out.print("좌측 상단: ");
+//        this.upperLeft.showPosition();
+//
+//        System.out.print("우측 하단: ");
+//        this.lowerRight.showPosition();
+//        System.out.println();
+//    }
+//}
+//
+//class ShallowCopy {
+//    public static void main(String[] args) {
+//        Rectangle org = new Rectangle(1, 1, 9, 9);
+//        Rectangle cpy;
+//
+//        try {
+//            cpy = (Rectangle)org.clone();
+//            org.changePos(2, 2, 7, 7);
+//            org.showPosition();
+//            cpy.showPosition();
+//        }
+//        catch(CloneNotSupportedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//}
+
+
+//import java.util.Arrays;
+//
+//class CopyOfArrays {
+//    public static void main(String[] args) {
+//        double[] arOrg = {1.1, 2.2, 3.3, 4.4, 5.5};
+//        double[] arCpy1 = Arrays.copyOf(arOrg, arOrg.length);
+//        double[] arCpy2 = Arrays.copyOf(arOrg, 3);
+//
+//        for(double d : arCpy1)
+//            System.out.print(d + "\t");
+//        System.out.println();
+//
+//        for(double d : arCpy2)
+//            System.out.print(d + "\t");
+//        System.out.println();
+//    }
+//}
+
+
+// p.471
