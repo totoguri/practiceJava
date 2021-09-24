@@ -1184,4 +1184,349 @@
 //}
 
 
-// p.471
+//import java.util.Arrays;
+//
+//class Person implements Comparable {
+//    private final String name;
+//    private final int age;
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public int compareTo(Object o) {
+//        Person p = (Person)o;
+//        return this.age - p.age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return name + ": " + age;
+//    }
+//}
+//
+//class ArrayObjSort {
+//    public static void main(String[] args) {
+//        Person[] ar = new Person[3];
+//        ar[0] = new Person("Lee", 29);
+//        ar[1] = new Person("Goo", 15);
+//        ar[2] = new Person("Soo", 37);
+//
+//        Arrays.sort(ar);
+//        for(Person p : ar)
+//            System.out.println(p);
+//    }
+//}
+
+
+//import java.util.Arrays;
+//
+//class ArraySearch {
+//    public static void main(String[] args) {
+//        int[] ar = {33, 55, 11, 44, 22};
+//        Arrays.sort(ar);
+//        for(int n : ar)
+//            System.out.print(n + "\t");
+//        System.out.println();
+//
+//        int idx = Arrays.binarySearch(ar, 33);
+//        System.out.println("Index of 33: " + idx);
+//    }
+//}
+
+
+//import java.util.Arrays;
+//
+//class Person implements Comparable {
+//    private String name;
+//    private int age;
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public int compareTo(Object o) {
+//        Person p = (Person)o;
+//        return this.age - p.age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return name + ": " + age;
+//    }
+//}
+//
+//class ArrayObjSearch {
+//    public static void main(String[] args) {
+//        Person[] ar = new Person[3];
+//        ar[0] = new Person("Lee", 29);
+//        ar[1] = new Person("Goo", 15);
+//        ar[2] = new Person("Soo", 37);
+//        Arrays.sort(ar);
+//        int idx = Arrays.binarySearch(ar, new Person("who?", 37));
+//        System.out.println(ar[idx]);
+//    }
+//}
+
+
+//class Apple {
+//    public String toString() {
+//        return "I am an apple.";
+//    }
+//}
+//
+//class Orange {
+//    public String toString() {
+//        return "I am an orange.";
+//    }
+//}
+//
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxGeneric {
+//    public static void main(String[] args) {
+//        Box<Apple> aBox = new Box<Apple>();
+//        Box<Orange> oBox = new Box<>();
+//
+//        aBox.set(new Apple());
+//        oBox.set(new Orange());
+//
+//        Apple ap = aBox.get();
+//        Orange og = oBox.get();
+//
+//        System.out.println(ap);
+//        System.out.println(og);
+//    }
+//}
+
+
+//class DBox<L, R> {
+//    private L left;
+//    private R right;
+//
+//    public void set(L o, R r) {
+//        this.left = o;
+//        this.right = r;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return this.left + " & " + this.right;
+//    }
+//}
+//
+//class Param {
+//    public static void main(String[] args) {
+//        DBox<String, Integer> box = new DBox<>();
+//        box.set("Apple", 25);
+//        System.out.println(box);
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxInBox {
+//    public static void main(String[] args) {
+//        Box<String> sBox = new Box<>();
+//        sBox.set("I am so happy");
+//
+//        Box<Box<String>> wBox = new Box<>();
+//        wBox.set(sBox);
+//
+//        Box<Box<Box<String>>> zBox = new Box<>();
+//        zBox.set(wBox);
+//
+//        System.out.println((zBox.get().get().get()));
+//    }
+//}
+
+
+//class Box<T extends Number> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "this is Number: " + this.ob;
+//    }
+//}
+//
+//class BoundedBox {
+//    public static void main(String[] args) {
+//        Box<Integer> iBox = new Box<>();
+//        iBox.set(24);
+//
+//        Box<Double> dBox = new Box<>();
+//        dBox.set(5.97);
+//
+//        System.out.println(iBox);
+//        System.out.println(dBox);
+//    }
+//}
+
+
+//interface Eatable {
+//    String eat();
+//}
+//
+//class Apple implements Eatable {
+//    public String toString() {
+//        return "I am an apple.";
+//    }
+//
+//    @Override
+//    public String eat() {
+//        return "It tastes so good!";
+//    }
+//}
+//
+//class Box<T extends Eatable> {
+//    T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        System.out.println(ob);
+//        System.out.println(ob.eat());
+//        return this.ob;
+//    }
+//}
+//
+//class Bounded {
+//    public static void main(String[] args) {
+//        Box<Apple> box = new Box<>();
+//        box.set(new Apple());
+//
+//        Apple ap = box.get();
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxFactory {
+//    public static <T> Box<T> makeBox(T o) {
+//        Box<T> box = new Box<>();
+//        box.set(o);
+//        return box;
+//    }
+//}
+//
+//class Generic {
+//    public static void main(String[] args) {
+//        Box<String> sBox = BoxFactory.makeBox("Sweet");
+//        System.out.println(sBox.get());
+//
+//        Box<Double> dBox = BoxFactory.makeBox(7.59);
+//        System.out.println(dBox.get());
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return ob;
+//    }
+//}
+//
+//class Unboxer {
+//    public static <T> T openBox(Box<T> box) {
+//        return box.get();
+//    }
+//}
+//
+//class GenericMaker {
+//    public static void main(String[] args) {
+//        Box<String> box = new Box<>();
+//        box.set("My Generic");
+//
+//        String str = Unboxer.openBox(box);
+//        System.out.println(str);
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxFactory {
+//    public static <T extends Number> Box<T> makeBox(T o) {
+//        Box<T> box = new Box<>();
+//        box.set(o);
+//
+//        System.out.println("Boxed data: " + o.intValue());
+//        return box;
+//    }
+//}
+//
+//class Unboxer {
+//    public static <T extends Number> T openBox(Box<T> box) {
+//        System.out.println("Unboxed data: " + box.get().intValue());
+//        return box.get();
+//    }
+//}
+//
+//class Method {
+//    public static void main(String[] args) {
+//        Box<Integer> sBox = BoxFactory.makeBox(5959);
+//        int n = Unboxer.openBox(sBox);
+//        System.out.println("Returned data: " + n);
+//    }
+//}
+
+
+// p.510
+
+
