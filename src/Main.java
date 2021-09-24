@@ -1530,3 +1530,276 @@
 // p.510
 
 
+//class Box<T> {
+//    protected T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//}
+//
+//class SteelBox<T> extends Box<T> {
+//    public SteelBox(T o) {
+//        ob = o;
+//    }
+//}
+//
+//class GenericInheritance {
+//    public static void main(String[] args) {
+//        Box<Integer> iBox;
+//        iBox = new SteelBox<>(7959);
+//        Box<String> sBox;
+//        sBox = new SteelBox<>("Simple");
+//
+//        System.out.println(iBox.get());
+//        System.out.println(sBox.get());
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//}
+//
+//class EmptyBoxFactory {
+//    public static <T> Box<T> makeBox() {
+//        return new Box<T>();
+//    }
+//}
+//
+//class TargetTypes {
+//    public static void main(String[] args) {
+//        Box<Integer> iBox = EmptyBoxFactory.<Integer>makeBox();
+//        iBox.set(25);
+//        System.out.println(iBox.get());
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//
+//    @Override
+//    public String toString() {
+//        return ob.toString();
+//    }
+//}
+//
+//class Unboxer {
+//    public static void peekBox(Box<? super Integer> box) {
+//        System.out.println(box);
+//    }
+//}
+//
+//class WildCard {
+//    public static void main(String[] args) {
+//        Box<Integer> iBox = new Box<Integer>();
+//        iBox.set(1234);
+//
+//        Box<Number> nBox = new Box<Number>();
+//        nBox.set(9955);
+//
+//        Box<Object> oBox = new Box<Object>();
+//        oBox.set("My Simple Instance");
+//
+//        Unboxer.peekBox(iBox);
+//        Unboxer.peekBox(nBox);
+//        Unboxer.peekBox(oBox);
+//    }
+//}
+
+
+// *** Very important ex. It explains almost all about WildCard. ***
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class BoxHandler {
+//    public static void outBox(Box<? extends Toy> box) {
+//        Toy t = box.get();
+//        System.out.println(t);
+//    }
+//    public static void inBox(Box<? super Toy> box, Toy n) {
+//        box.set(n);
+//    }
+//}
+//
+//class BoundedWildCard {
+//    public static void main(String[] args) {
+//        Box<Toy> box = new Box<>();
+//        BoxHandler.inBox(box, new Toy());
+//        BoxHandler.outBox(box);
+//    }
+//}
+
+
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class BoxContentsMover {
+//    public static void moveBox(Box<? super Toy> to, Box<? extends Toy> from) {
+//        to.set(from.get());
+//    }
+//}
+//
+//class MoveBox {
+//    public static void main(String[] args) {
+//        Box<Toy> box1 = new Box<>();
+//        box1.set(new Toy());
+//        Box<Toy> box2 = new Box<>();
+//
+//        BoxContentsMover.moveBox(box2, box1);
+//        System.out.println(box1.get());
+//    }
+//}
+
+
+// *** 와일드 카드 오버로딩 대체 방편 ***
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//    public T get() {return ob;}
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class Robot {
+//    @Override
+//    public String toString() {
+//        return "I am a Robot";
+//    }
+//}
+//
+//class BoxHandler {
+//    public static <T> void outBox(Box<? extends T> box) {
+//        T t = box.get();
+//        System.out.println(t);
+//    }
+//
+//    public static <T> void inBox(Box<? super T> box, T n) {
+//        box.set(n);
+//    }
+//}
+//
+//class BoundedWildCard {
+//    public static void main(String[] args) {
+//        Box<Toy> tBox = new Box<>();
+//        BoxHandler.inBox(tBox, new Toy());
+//        BoxHandler.outBox(tBox);
+//
+//        Box<Robot> rBox = new Box<>();
+//        BoxHandler.inBox(rBox, new Robot());
+//        BoxHandler.outBox(rBox);
+//    }
+//}
+
+
+//interface Getable<T> {
+//    T get();
+//}
+//
+//class Box<T> implements Getable<String> {
+//    private T ob;
+//    public void set(T o) {ob = o;}
+//
+//    @Override
+//    public String get() {
+//        return ob.toString();
+//    }
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class GetableGenericInterface {
+//    public static void main(String[] args) {
+//        Box<Toy> box = new Box<>();
+//        box.set(new Toy());
+//
+//        Getable<String> gt = box;
+//        System.out.println(gt.get());
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
