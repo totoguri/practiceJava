@@ -2012,57 +2012,326 @@
 //}
 
 
-import java.util.HashSet;
-
-class Car {
-    private String model;
-    private String color;
-
-    public Car(String m, String c) {
-        this.model = m;
-        this.color = c;
-    }
-
-    @Override
-    public String toString() {
-        return model + " : " + color;
-    }
-
-    @Override
-    public int hashCode() {
-        return (model.hashCode() + color.hashCode()) / 2;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        String m = ((Car)obj).model;
-        String c = ((Car)obj).color;
-
-        if(model.equals(m) && color.equals(c))
-            return true;
-        else
-            return false;
-    }
-}
-
-class HowHashCode {
-    public static void main(String[] args) {
-        HashSet<Car> set = new HashSet<>();
-        set.add(new Car("HY_MD_301", "RED"));
-        set.add(new Car("HY_MD_301", "BLACK"));
-        set.add(new Car("HY_MD_302", "RED"));
-        set.add(new Car("HY_MD_302", "WHITE"));
-        set.add(new Car("HY_MD_301", "BLACK"));
-        System.out.println("Instance Count: " + set.size());
-
-        for(Car car : set)
-            System.out.println(car.toString() + '\t');
-    }
-}
+//import java.util.HashSet;
+//
+//class Car {
+//    private String model;
+//    private String color;
+//
+//    public Car(String m, String c) {
+//        this.model = m;
+//        this.color = c;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return model + " : " + color;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return (model.hashCode() + color.hashCode()) / 2;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        String m = ((Car)obj).model;
+//        String c = ((Car)obj).color;
+//
+//        if(model.equals(m) && color.equals(c))
+//            return true;
+//        else
+//            return false;
+//    }
+//}
+//
+//class HowHashCode {
+//    public static void main(String[] args) {
+//        HashSet<Car> set = new HashSet<>();
+//        set.add(new Car("HY_MD_301", "RED"));
+//        set.add(new Car("HY_MD_301", "BLACK"));
+//        set.add(new Car("HY_MD_302", "RED"));
+//        set.add(new Car("HY_MD_302", "WHITE"));
+//        set.add(new Car("HY_MD_301", "BLACK"));
+//        System.out.println("Instance Count: " + set.size());
+//
+//        for(Car car : set)
+//            System.out.println(car.toString() + '\t');
+//    }
+//}
 
 // p.571
 
 
+//import java.util.TreeSet;
+//import java.util.Iterator;
+//
+//class SortedTreeSet {
+//    public static void main(String[] args) {
+//        TreeSet<Integer> tree = new TreeSet<Integer>();
+//        tree.add(3); tree.add(1);
+//        tree.add(2); tree.add(4);
+//        System.out.println("Instance Count: " + tree.size());
+//
+//        for(Integer n : tree)
+//            System.out.print(n.toString() + '\t');
+//        System.out.println();
+//
+//        for(Iterator<Integer> itr = tree.iterator(); itr.hasNext();)
+//            System.out.print(itr.next().toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.TreeSet;
+//import java.util.Iterator;
+//import java.util.Comparator;
+//
+//class Person implements Comparable<Person> {
+//    String name;
+//    int age;
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return name + " : " + age;
+//    }
+//
+//    @Override
+//    public int compareTo(Person p) {
+//        return this.age - p.age;
+//    }
+//}
+//
+//class PersonComparator implements Comparator<Person> {
+//    public int compare(Person p1, Person p2) {
+//        return p2.age - p1.age;
+//    }
+//}
+//
+//class ComparablePerson {
+//    public static void main(String[] args) {
+//        TreeSet<Person> tree = new TreeSet<>(new PersonComparator());
+//        tree.add(new Person("YOON", 37));
+//        tree.add(new Person("HONG", 53));
+//        tree.add(new Person("PARK", 22));
+//
+//        for(Person p : tree)
+//            System.out.println(p);
+//    }
+//}
+
+
+//import java.util.TreeSet;
+//import java.util.Iterator;
+//import java.util.Comparator;
+//
+//class StringComparator implements Comparator<String> {
+//    public int compare(String s1, String s2) {
+//        return s1.length() - s2.length();
+//    }
+//}
+//
+//class ComparatorString {
+//    public static void main(String[] args) {
+//        TreeSet<String> tree = new TreeSet<>(new StringComparator());
+//        tree.add("Box");
+//        tree.add("Rabbit");
+//        tree.add("Robot");
+//
+//        for(String s : tree)
+//            System.out.print(s.toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.HashSet;
+//
+//class ConvertCollection {
+//    public static void main(String[] args) {
+//        List<String> lst = Arrays.asList("Box", "Toy", "Box", "Toy");
+//        ArrayList<String> list = new ArrayList<>(lst);
+//
+//        for(String s : list)
+//            System.out.print(s.toString() + '\t');
+//        System.out.println();
+//
+//        HashSet<String> set = new HashSet<>(list);
+//
+//        list = new ArrayList<>(set);
+//
+//        for(String s : list)
+//            System.out.print(s.toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.Queue;
+//import java.util.LinkedList;
+//
+//class LinkedListQueue {
+//    public static void main(String[] args) {
+//        Queue<String> que = new LinkedList<>();
+//        que.offer("Box");
+//        que.offer("Toy");
+//        que.offer("Robot");
+//
+//        System.out.println("next: " + que.peek());
+//
+//        System.out.println(que.poll());
+//        System.out.println(que.poll());
+//
+//        System.out.println("next: " + que.peek());
+//        System.out.println(que.poll());
+//    }
+//}
+
+
+//import java.util.Deque;
+//import java.util.ArrayDeque;
+//
+//class ArrayDequeCollection {
+//    public static void main(String[] args) {
+//        Deque<String> deq = new ArrayDeque<>();
+//
+//        deq.offerFirst("1.Box");
+//        deq.offerFirst("2.Toy");
+//        deq.offerFirst("3.Robot");
+//
+//        System.out.println(deq.pollFirst());
+//        System.out.println(deq.pollLast());
+//        System.out.println(deq.pollFirst());
+//    }
+//}
+
+
+//import java.util.Deque;
+//import java.util.ArrayDeque;
+//
+//interface DIStack<E> {
+//    public boolean push(E item);
+//    public E pop();
+//}
+//
+//class DCStack<E> implements DIStack<E> {
+//    private Deque<E> deq;
+//
+//    public DCStack(Deque<E> d) {
+//        deq = d;
+//    }
+//
+//    public boolean push(E item) {
+//        return deq.offerFirst(item);
+//    }
+//    public E pop() {
+//        return deq.pollFirst();
+//    }
+//}
+//
+//class DefinedStack {
+//    public static void main(String[] args) {
+//        DIStack<String> stk = new DCStack<>(new ArrayDeque<String>());
+//
+//        stk.push("1.Box");
+//        stk.push("2.Toy");
+//        stk.push("3.Robot");
+//
+//        System.out.println(stk.pop());
+//        System.out.println(stk.pop());
+//        System.out.println(stk.pop());
+//    }
+//}
+
+
+//import java.util.HashMap;
+//
+//class HashMapCollection {
+//    public static void main(String[] args) {
+//        HashMap<Integer, String> map = new HashMap<>();
+//
+//        map.put(45, "Brown");
+//        map.put(37, "James");
+//        map.put(23, "Martin");
+//
+//        System.out.println("No.23: " + map.get(23));
+//        System.out.println("No.37: " + map.get(37));
+//        System.out.println("No.45: " + map.get(45));
+//        System.out.println();
+//
+//        map.remove(37);
+//
+//        System.out.println("No.37: " + map.get(37));
+//    }
+//}
+
+
+//import java.util.TreeMap;
+//import java.util.Iterator;
+//import java.util.Set;
+//import java.util.Comparator;
+//
+//class AgeComparator implements Comparator<Integer> {
+//    public int compare(Integer n1, Integer n2) {
+//        return n2.intValue() - n1.intValue();
+//    }
+//}
+//
+//class HashMapIteration {
+//    public static void main(String[] args) {
+//        TreeMap<Integer, String> map = new TreeMap<>(new AgeComparator());
+//        map.put(45, "Brown");
+//        map.put(37, "James");
+//        map.put(23, "Martin");
+//
+//        Set<Integer> ks = map.keySet();
+//
+//        for(Integer n : ks)
+//            System.out.print(n.toString() + " : " + map.get(n).toString() + '\t');
+//        System.out.println();
+//
+//        for(Integer n : ks)
+//            System.out.print(map.get(n).toString() + '\t');
+//        System.out.println();
+//
+//        for(Iterator<Integer> itr = ks.iterator(); itr.hasNext();)
+//            System.out.print(map.get(itr.next()) + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+import java.util.List;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collections;
+
+class SortCollections {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Weapon");
+        list = new ArrayList<>(list);
+
+        for (String value : list) System.out.print(value + "\t");
+        System.out.println();
+
+        Collections.sort(list);
+
+        for (String s : list) System.out.print(s + '\t');
+        System.out.println();
+    }
+}
+
+// p.601
 
 
 
