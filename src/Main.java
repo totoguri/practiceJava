@@ -2310,30 +2310,300 @@
 //}
 
 
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Collections;
-
-class SortCollections {
-    public static void main(String[] args) {
-        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Weapon");
-        list = new ArrayList<>(list);
-
-        for (String value : list) System.out.print(value + "\t");
-        System.out.println();
-
-        Collections.sort(list);
-
-        for (String s : list) System.out.print(s + '\t');
-        System.out.println();
-    }
-}
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.Collections;
+//
+//class SortCollections {
+//    public static void main(String[] args) {
+//        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Weapon");
+//        list = new ArrayList<>(list);
+//
+//        for (String value : list) System.out.print(value + "\t");
+//        System.out.println();
+//
+//        Collections.sort(list);
+//
+//        for (String s : list) System.out.print(s + '\t');
+//        System.out.println();
+//    }
+//}
 
 // p.601
 
 
+//import java.util.*;
+//
+//class Car implements Comparable<Car> {
+//    private final int disp;
+//
+//    public Car(int d) {
+//        disp = d;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "cc: " + disp;
+//    }
+//    @Override
+//    public int compareTo(Car o) {
+//        return this.disp - o.disp;
+//    }
+//}
+//
+//class CarSortCollections {
+//    public static void main(String[] args) {
+//        List<Car> list = new ArrayList<>();
+//        list.add(new Car(1200));
+//        list.add(new Car(3000));
+//        list.add(new Car(1800));
+//        Collections.sort(list);
+//
+//        for(Iterator<Car> itr = list.iterator(); itr.hasNext();)
+//            System.out.println(itr.next().toString() + '\t');
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.Collections;
+//
+//class Car implements Comparable<Car> {
+//    protected int disp;
+//
+//    public Car(int d) {
+//        disp = d;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "cc: " + disp;
+//    }
+//    @Override
+//    public int compareTo(Car o) {
+//        return this.disp - o.disp;
+//    }
+//}
+//
+//class ECar extends Car {
+//    private int battery;
+//
+//    public ECar(int d, int b) {
+//        super(d);
+//        battery = b;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "cc: " + super.disp + ", ba: " + this.battery;
+//    }
+//}
+//
+//class ECarSortCollections {
+//    public static void main(String[] args) {
+//        List<ECar> list = new ArrayList<>();
+//        list.add(new ECar(1200, 99));
+//        list.add(new ECar(3000, 55));
+//        list.add(new ECar(1800, 87));
+//        Collections.sort(list);
+//
+//        for(Iterator<ECar> itr = list.iterator(); itr.hasNext();)
+//            System.out.println(itr.next().toString() + '\t');
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.Comparator;
+//import java.util.Collections;
+//
+//class Car {
+//    protected int disp;
+//    public Car(int d) {
+//        this.disp = d;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "cc: " + disp;
+//    }
+//}
+//
+//class CarComp implements Comparator<Car> {
+//    @Override
+//    public int compare(Car o1, Car o2) {
+//        return o1.disp - o2.disp;
+//    }
+//}
+//
+//class ECar extends Car {
+//    private int battery;
+//
+//    public ECar(int d, int b) {
+//        super(d);
+//        battery = b;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "cc: " + disp + ", ba: " + battery;
+//    }
+//}
+//
+//class CarComparator {
+//    public static void main(String[] args) {
+//        List<Car> clist = new ArrayList<>();
+//        clist.add(new Car(1800));
+//        clist.add(new Car(1200));
+//        clist.add(new Car(3000));
+//
+//        List<ECar> elist = new ArrayList<>();
+//        elist.add(new ECar(3000, 55));
+//        elist.add(new ECar(1800, 87));
+//        elist.add(new ECar(1200, 99));
+//
+//        CarComp comp = new CarComp();
+//
+//        Collections.sort(clist, comp);
+//        Collections.sort(elist, comp);
+//
+//        for(Iterator<Car> itr = clist.iterator(); itr.hasNext();)
+//            System.out.println(itr.next().toString() + '\t');
+//        System.out.println();
+//
+//        for(Iterator<ECar> itr = elist.iterator(); itr.hasNext();)
+//            System.out.println(itr.next().toString() + '\t');
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//
+//class StringBinarySearch {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//        list.add("Box");
+//        list.add("Robot");
+//        list.add("Apple");
+//
+//        Collections.sort(list);
+//        int idx = Collections.binarySearch(list, "Robot");
+//        System.out.println(list.get(idx));
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Comparator;
+//import java.util.Collections;
+//
+//class StrComp implements Comparator<String> {
+//    @Override
+//    public int compare(String s1, String s2) {
+//        return s1.compareToIgnoreCase(s2);
+//    }
+//}
+//
+//class StringComparator {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//        list.add("ROBOT");
+//        list.add("APPLE");
+//        list.add("BOX");
+//
+//        StrComp cmp = new StrComp();
+//        Collections.sort(list,cmp);
+//        int idx = Collections.binarySearch(list, "Robot", cmp);
+//        System.out.println(list.get(idx));
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//
+//class CopyList {
+//    public static void main(String[] args) {
+//        List<String> src = Arrays.asList("Box", "Apple", "Toy", "Robot");
+//
+//        List<String> dest = new ArrayList<>(src);
+//
+//        Collections.sort(dest);
+//        System.out.println(dest);
+//
+//        Collections.copy(dest, src);
+//        System.out.println(dest);
+//    }
+//}
+
+
+//enum Person {
+//    MAN, WOMAN;
+//
+//    @Override
+//    public String toString() {
+//        return "I am a dog person.";
+//    }
+//}
+//
+//class EnumConst {
+//    public static void main(String[] args) {
+//        System.out.println(Person.MAN);
+//        System.out.println(Person.WOMAN);
+//    }
+//}
+
+
+//enum Person {
+//    MAN(29), WOMAN(25);
+//
+//    int age;
+//    private Person(int age) {
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "I am " + age + " years old";
+//    }
+//}
+//
+//class EnumParam {
+//    public static void main(String[] args) {
+//        System.out.println(Person.MAN);
+//        System.out.println(Person.WOMAN);
+//    }
+//}
+
+
+class Varargs {
+    public static void showAll(String...vargs) {
+        System.out.println("LEN: " + vargs.length);
+
+        for(String s: vargs)
+            System.out.print(s + '\t');
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        showAll("Box");
+        showAll("Box", "Toy");
+        showAll("Box", "Toy", "Apple");
+    }
+}
+
+// p.648
 
 
 
