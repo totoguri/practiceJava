@@ -1778,45 +1778,289 @@
 // p.552
 
 
-import java.util.List;
-import java.util.LinkedList;
-import java.util.Iterator;
-
-class IteratorCollection {
-    public static void main(String[] args) {
-        List<String> list = new LinkedList<>();
-        list.add("Toy");
-        list.add("Box");
-        list.add("Robot");
-        list.add("Box");
-
-        Iterator<String> itr = list.iterator();
-
-        while(itr.hasNext())
-            System.out.print(itr.next() + '\t');
-        System.out.println();
-
-        itr = list.iterator();
-
-        String str;
-        while(itr.hasNext()) {
-            str = itr.next();
-            if(str.equals("Box"))
-                itr.remove();
-        }
-
-        itr = list.iterator();
-
-        while(itr.hasNext())
-            System.out.print(itr.next() + '\t');
-        System.out.println();
-    }
-}
+//import java.util.List;
+//import java.util.LinkedList;
+//import java.util.Iterator;
+//
+//class IteratorCollection {
+//    public static void main(String[] args) {
+//        List<String> list = new LinkedList<>();
+//        list.add("Toy");
+//        list.add("Box");
+//        list.add("Robot");
+//        list.add("Box");
+//
+//        Iterator<String> itr = list.iterator();
+//
+//        while(itr.hasNext())
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//
+//        itr = list.iterator();
+//
+//        String str;
+//        while(itr.hasNext()) {
+//            str = itr.next();
+//            if(str.equals("Box"))
+//                itr.remove();
+//        }
+//
+//        itr = list.iterator();
+//
+//        while(itr.hasNext())
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//    }
+//}
 
 // p.555
 
 
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.Arrays;
+//
+//class AsListCollection {
+//    public static void main(String[] args) {
+//        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box");
+//        list = new ArrayList<>(list);
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();) {
+//            if(itr.next().equals("Box"))
+//                itr.remove();
+//        }
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//    }
+//}
 
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.LinkedList;
+//import java.util.Iterator;
+//import java.util.Arrays;
+//
+//class ConversionCollection {
+//    public static void main(String[] args) {
+//        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box");
+//        list = new ArrayList<>(list);
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//
+//        list = new LinkedList<>(list);
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.Iterator;
+//import java.util.LinkedList;
+//
+//class PrimitiveCollection {
+//    public static void main(String[] args) {
+//        LinkedList<Integer> list = new LinkedList<>();
+//        list.add(10); list.add(20); list.add(30);
+//
+//        int n;
+//        for(Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
+//            n = itr.next();
+//            System.out.print(n + "\t");
+//        }
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Iterator;
+//import java.util.ListIterator;
+//import java.util.Arrays;
+//
+//class ListIteratorCollection {
+//    public static void main(String[] args) {
+//        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box");
+//        list = new ArrayList<>(list);
+//
+//        ListIterator<String> litr = list.listIterator();
+//
+//        String str;
+//        while(litr.hasNext()) {
+//            str = litr.next();
+//            System.out.print(str + '\t');
+//            if(str.equals("Toy"))
+//                litr.add("Toy2");
+//        }
+//        System.out.println();
+//
+//        while(litr.hasPrevious()) {
+//            str = litr.previous();
+//            System.out.print(str + '\t');
+//            if(str.equals("Robot"))
+//                litr.add("Robot2");
+//        }
+//        System.out.println();
+//
+//        for(Iterator<String> itr = list.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.Iterator;
+//import java.util.HashSet;
+//import java.util.Set;
+//
+//class SetCollectionFeature {
+//    public static void main(String[] args) {
+//        Set<String> set = new HashSet<>();
+//        set.add("Toy");
+//        set.add("Box");
+//        set.add("Robot");
+//        set.add("Box");
+//        System.out.println("Instance count: " + set.size());
+//
+//        for(Iterator<String> itr = set.iterator(); itr.hasNext();)
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//
+//        for(String s : set)
+//            System.out.print(s + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.HashSet;
+//
+//class Num {
+//    private int num;
+//    public Num(int n) {num = n;}
+//
+//    @Override
+//    public String toString() {
+//        return String.valueOf(num);
+//    }
+//}
+//
+//class HashSetEqualityOne {
+//    public static void main(String[] args) {
+//        HashSet<Num> set = new HashSet<>();
+//        set.add(new Num(7799));
+//        set.add(new Num(9955));
+//        set.add(new Num(7799));
+//        System.out.println("Instance count: " + set.size());
+//
+//        for(Num n : set)
+//            System.out.print(n.toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.HashSet;
+//
+//class Num {
+//    private int num;
+//    public Num(int n) {num = n;}
+//
+//    @Override
+//    public String toString() {
+//        return String.valueOf(num);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return num % 3;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(num == ((Num)obj).num)
+//            return true;
+//        else
+//            return false;
+//    }
+//}
+//
+//class HashSetEquality {
+//    public static void main(String[] args) {
+//        HashSet<Num> set = new HashSet<>();
+//        set.add(new Num(7799));
+//        set.add(new Num(9955));
+//        set.add(new Num(7799));
+//        System.out.println("Instance Count: " + set.size());
+//
+//        for(Num n : set)
+//            System.out.print(n.toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+import java.util.HashSet;
+
+class Car {
+    private String model;
+    private String color;
+
+    public Car(String m, String c) {
+        this.model = m;
+        this.color = c;
+    }
+
+    @Override
+    public String toString() {
+        return model + " : " + color;
+    }
+
+    @Override
+    public int hashCode() {
+        return (model.hashCode() + color.hashCode()) / 2;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        String m = ((Car)obj).model;
+        String c = ((Car)obj).color;
+
+        if(model.equals(m) && color.equals(c))
+            return true;
+        else
+            return false;
+    }
+}
+
+class HowHashCode {
+    public static void main(String[] args) {
+        HashSet<Car> set = new HashSet<>();
+        set.add(new Car("HY_MD_301", "RED"));
+        set.add(new Car("HY_MD_301", "BLACK"));
+        set.add(new Car("HY_MD_302", "RED"));
+        set.add(new Car("HY_MD_302", "WHITE"));
+        set.add(new Car("HY_MD_301", "BLACK"));
+        System.out.println("Instance Count: " + set.size());
+
+        for(Car car : set)
+            System.out.println(car.toString() + '\t');
+    }
+}
+
+// p.571
 
 
 
