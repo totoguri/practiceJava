@@ -2587,23 +2587,133 @@
 //}
 
 
-class Varargs {
-    public static void showAll(String...vargs) {
-        System.out.println("LEN: " + vargs.length);
+//class Varargs {
+//    public static void showAll(String...vargs) {
+//        System.out.println("LEN: " + vargs.length);
+//
+//        for(String s: vargs)
+//            System.out.print(s + '\t');
+//        System.out.println();
+//    }
+//
+//    public static void main(String[] args) {
+//        showAll("Box");
+//        showAll("Box", "Toy");
+//        showAll("Box", "Toy", "Apple");
+//    }
+//}
 
-        for(String s: vargs)
-            System.out.print(s + '\t');
-        System.out.println();
-    }
+// p.648
 
+
+//interface Printable {
+//    void print();
+//}
+//
+//class Papers {
+//    private String con;
+//    public Papers(String s) {
+//        con = s;
+//    }
+//    public Printable getPrinter() {
+//        return new Printer();
+//    }
+//
+//    private class Printer implements Printable {
+//        public void print() {
+//            System.out.println(con);
+//        }
+//    }
+//}
+//
+//class UseMemberInner {
+//    public static void main(String[] args) {
+//        Papers p = new Papers("Info: Happy");
+//        Printable prn = p.getPrinter();
+//        prn.print();
+//    }
+//}
+
+
+//interface Printable {
+//    void print();
+//}
+//
+//class Papers {
+//    private String con;
+//    public Papers(String s) {
+//        con = s;
+//    }
+//
+//    public Printable getPrinter() {
+//        return new Printable() {
+//            public void print() {
+//                System.out.println(con);
+//            }
+//        };
+//    }
+//}
+//
+//class UseAnonymousInner {
+//    public static void main(String[] args) {
+//        Papers p = new Papers("Info: Happy");
+//        Printable prn = p.getPrinter();
+//        prn.print();
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Comparator;
+//import java.util.Collections;
+//
+//class StrComp implements Comparator<String> {
+//    @Override
+//    public int compare(String s1, String s2) {
+//        return s1.length() - s2.length();
+//    }
+//}
+//
+//class SortComparator {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//        list.add("ROBOT");
+//        list.add("APPLE");
+//        list.add("BOX");
+//
+//        StrComp cmp = new StrComp();
+//        Collections.sort(list, cmp);
+//        System.out.println(list);
+//    }
+//}
+
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Collections;
+
+class AnonymousCom {
     public static void main(String[] args) {
-        showAll("Box");
-        showAll("Box", "Toy");
-        showAll("Box", "Toy", "Apple");
+        List<String> list = new ArrayList<>();
+        list.add("ROBOT");
+        list.add("APPLE");
+        list.add("BOX");
+
+        Comparator<String> cmp = new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.length() - o2.length();
+            }
+        };
+
+        Collections.sort(list, cmp);
+        System.out.println(list);
     }
 }
 
-// p.648
+// p.656
 
 
 
