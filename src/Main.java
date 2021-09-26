@@ -2689,31 +2689,432 @@
 //}
 
 
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Comparator;
+//import java.util.Collections;
+//
+//class AnonymousCom {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//        list.add("ROBOT");
+//        list.add("APPLE");
+//        list.add("BOX");
+//
+//        Comparator<String> cmp = new Comparator<String>() {
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return o1.length() - o2.length();
+//            }
+//        };
+//
+//        Collections.sort(list, cmp);
+//        System.out.println(list);
+//    }
+//}
+
+// p.656
+
+
+//interface Printable {
+//    void print(String s);
+//}
+//
+//class Printer implements Printable {
+//    public void print(String s) {
+//        System.out.println(s);
+//    }
+//}
+//
+//class Lambda1 {
+//    public static void main(String[] args) {
+//        Printable prn = new Printer();
+//        prn.print("What is Lambda?");
+//    }
+//}
+
+
+//interface Printable {
+//    void print(String s);
+//}
+//
+//class Lambda2 {
+//    public static void main(String[] args) {
+//        Printable prn = new Printable() {
+//            public void print(String s) {
+//                System.out.println(s);
+//            }
+//        };
+//
+//        prn.print("What is Lambda?");
+//    }
+//}
+
+
+//interface Printable {
+//    void print(String s);
+//}
+//
+//class Lambda3 {
+//    public static void main(String[] args) {
+//        Printable prn = System.out::println;
+//        prn.print("What is Lambda?");
+//    }
+//}
+
+
+//interface Printable {
+//    void print(String s);
+//}
+//
+//class Lambda4 {
+//    public static void ShowString(Printable p, String s) {
+//        p.print(s);
+//    }
+//
+//    public static void main(String[] args) {
+//        ShowString(System.out::println, "What is Lambda?");
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.Comparator;
+//import java.util.Collections;
+//
+//class SLenComp implements Comparator<String> {
+//    @Override
+//    public int compare(String s1, String s2) {
+//        return s1.length() - s2.length();
+//    }
+//}
+//
+//class SLenComparator {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//        list.add("Robot");
+//        list.add("Lambda");
+//        list.add("Box");
+//
+//        Collections.sort(list, new SLenComp());
+//
+//        list.forEach(System.out::println);
+//    }
+//}
+
+
+//interface Printable {
+//    void print(String s);
+//}
+//
+//class OneParamNoReturn {
+//    public static void main(String[] args) {
+//        Printable p;
+//        p = System.out::println;
+//        p.print("Lambda exp one.");
+//
+//        p = System.out::println;
+//        p.print("Lambda exp two.");
+//
+//        p = (s) -> System.out.println(s);
+//        p.print("Lambda exp three.");
+//
+//        p = s -> System.out.println(s);
+//        p.print("Lambda exp four.");
+//    }
+//}
+
+
+//interface Calculate {
+//    void cal(int a, int b);
+//}
+//
+//class TwoParamNoReturn {
+//    public static void main(String[] args) {
+//        Calculate c;
+//        c = (a, b) -> System.out.println(a + b);
+//        c.cal(4, 3);
+//
+//        c = (a, b) -> System.out.println(a - b);
+//        c.cal(4, 3);
+//
+//        c = (a, b) -> System.out.println(a * b);
+//        c.cal(4, 3);
+//    }
+//}
+
+
+//interface Calculate {
+//    int cal(int a, int b);
+//}
+//
+//class TwoParamAndReturn {
+//    public static void main(String[] args) {
+//        Calculate c;
+//        c = Integer::min;
+//        System.out.println(c.cal(4, 3));
+//
+//        c = (a, b) -> a - b;
+//        System.out.println(c.cal(4, 3));
+//    }
+//}
+
+
+//interface HowLong {
+//    int len(String s);
+//}
+//
+//class OneParamAndReturn {
+//    public static void main(String[] args) {
+//        HowLong hl = String::length;
+//        System.out.println(hl.len("I am so happy"));
+//    }
+//}
+
+
+//import java.util.Random;
+//
+//interface Generator {
+//    int rand();
+//}
+//
+//class NoParamAndReturn {
+//    public static void main(String[] args) {
+//        Generator gen = () -> {
+//            Random rand = new Random();
+//            return rand.nextInt(50);
+//        };
+//
+//        System.out.println(gen.rand());
+//    }
+//}
+
+
+//@FunctionalInterface
+//interface Calculate <T> {
+//    T cal(T a, T b);
+//}
+//
+//class LambdaGeneric {
+//    public static void main(String[] args) {
+//        Calculate<Integer> ci = Integer::sum;
+//        System.out.println(ci.cal(4, 3));
+//
+//        Calculate<Double> cd = Double::sum;
+//        System.out.println(cd.cal(4.32, 3.45));
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util. function.Predicate;
+//
+//class PredicateDemo {
+//    public static int sum(Predicate<Integer> p, List<Integer> lst) {
+//        int s = 0;
+//        for(int n : lst) {
+//            if(p.test(n))
+//                s += n;
+//        }
+//        return s;
+//    }
+//
+//    public static void main(String[] args) {
+//        List<Integer> list = Arrays.asList(1, 5, 7, 9, 11, 12);
+//        int s;
+//        s = sum(n -> n%2 == 0, list);
+//        System.out.println("Sum of even: " + s);
+//
+//        s = sum(n -> n%2 != 0, list);
+//        System.out.println("Sum of odd : " + s);
+//    }
+//}
+
+
+//import java.util.Arrays;
+//import java.util.List;
+//import java.util.function.IntPredicate;
+//
+//class IntPredicateDemo {
+//    public static int sum(IntPredicate ip, List<Integer> lst) {
+//        int s = 0;
+//        for(int n : lst) {
+//            if(ip.test(n))
+//                s += n;
+//        }
+//        return s;
+//    }
+//
+//    public static void main(String[] args) {
+//        List<Integer> list = Arrays.asList(1, 5, 7, 9, 11, 12);
+//        int s;
+//        s = sum(n -> n%2 == 0, list);
+//        System.out.println("Sum of even : " + s);
+//
+//        s = sum(n -> n%2 != 0, list);
+//        System.out.println("Sum of odd  : " + s);
+//    }
+//}
+
+
+//import java.util.Random;
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.function.Supplier;
+//
+//class SupplierDemo {
+//    public static List<Integer> makeIntList(Supplier<Integer> s, int n) {
+//        List<Integer> list = new ArrayList<>();
+//
+//        for(int i = 0; i < n; i++)
+//            list.add(s.get());
+//
+//        return list;
+//    }
+//
+//    public static void main(String[] args) {
+//        Supplier<Integer> spr = () -> {
+//            Random rand = new Random();
+//            return rand.nextInt(50);
+//        };
+//
+//        List<Integer> list = makeIntList(spr, 5);
+//        System.out.println(list);
+//
+//        list = makeIntList(spr, 10);
+//        System.out.println(list);
+//    }
+//}
+
+
+//import java.util.Random;
+//import java.util.List;
+//import java.util.ArrayList;
+//import java.util.function.IntSupplier;
+//
+//class IntSuppleirDemo {
+//    public static List<Integer> makeIntList(IntSupplier is, int n) {
+//        List<Integer> list = new ArrayList<>();
+//
+//        for(int i = 0; i < n; i++)
+//            list.add(is.getAsInt());
+//
+//        return list;
+//    }
+//
+//    public static void main(String[] args) {
+//        IntSupplier ispr = () -> {
+//            Random rand = new Random();
+//            return rand.nextInt(50);
+//        };
+//
+//        List<Integer> list = makeIntList(ispr, 5);
+//        System.out.println(list);
+//
+//        list = makeIntList(ispr, 10);
+//        System.out.println(list);
+//    }
+//}
+
+
+//import java.util.function.Consumer;
+//
+//class ConsumerDemo {
+//    public static void main(String[] args) {
+//        Consumer<String> c = s -> System.out.println(s);
+//        c.accept("Pineapple");
+//        c.accept("Strawberry");
+//    }
+//}
+
+
+//import java.util.function.ObjIntConsumer;
+//
+//class ObjIntConsumerDemo {
+//    public static void main(String[] args) {
+//        ObjIntConsumer<String> c = (s, i) -> System.out.println(i + ". " + s);
+//
+//        int n = 1;
+//        c.accept("Toy", n++);
+//        c.accept("Book", n++);
+//        c.accept("Candy", n);
+//    }
+//}
+
+
+//import java.util.function.Function;
+//
+//class FunctionDemo {
+//    public static void main(String[] args) {
+//        Function<String, Integer> f = s -> s.length();
+//        System.out.println(f.apply("Robot"));
+//        System.out.println(f.apply("System"));
+//    }
+//}
+
+
+//import java.util.function.Function;
+//
+//class FunctionDemo2 {
+//    public static void main(String[] args) {
+//        Function<Double, Double> cti = d -> d* 0.393701;
+//        Function<Double, Double> itc = d -> d * 2.54;
+//        System.out.println("2 cm = " + cti.apply(2.0) + "inch");
+//        System.out.println("1 inch = " + itc.apply(1.0) + "cm");
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.function.Predicate;
+//
+//class RemoveIfDemo {
+//    public static void main(String[] args) {
+//        List<Integer> ls1 = Arrays.asList(1, -2, 3, -4, 5);
+//        ls1 = new ArrayList<>(ls1);
+//
+//        List<Double> ls2 = Arrays.asList(-1.1, 2.2, 3.3, -4.4, 5.5);
+//        ls2 = new ArrayList<>(ls2);
+//
+//        Predicate<Number> p = n -> n.doubleValue() < 0.0;
+//        ls1.removeIf(p);
+//        ls2.removeIf(p);
+//
+//        System.out.println(ls1);
+//        System.out.println(ls2);
+//    }
+//}
+
+
 import java.util.List;
+import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Collections;
+import java.util.function.Consumer;
 
-class AnonymousCom {
-    public static void main(String[] args) {
-        List<String> list = new ArrayList<>();
-        list.add("ROBOT");
-        list.add("APPLE");
-        list.add("BOX");
-
-        Comparator<String> cmp = new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.length() - o2.length();
-            }
-        };
-
-        Collections.sort(list, cmp);
-        System.out.println(list);
+class JustSort {
+    public void sort(List<?> lst) {
+        Collections.reverse(lst);
     }
 }
 
-// p.656
+class ArrangeList3 {
+    public static void main(String[] args) {
+        List<Integer> ls = Arrays.asList(1, 3, 5, 7, 9);
+        ls = new ArrayList<>(ls);
+        JustSort js = new JustSort();
+
+        Consumer<List<Integer>> c = e -> js.sort(e);
+        c.accept(ls);
+        System.out.println(ls);
+    }
+}
+
+// p.696
 
 
 
