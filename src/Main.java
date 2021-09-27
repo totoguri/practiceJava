@@ -3343,10 +3343,11 @@
 //        Optional<String> os1 = Optional.empty();
 //        Optional<String> os2 = Optional.of("So basic");
 //
-//        String s1 = os1.map(s -> s.toString())
+//        String s1;
+//        s1 = os1.map(String::toString)
 //                .orElse("Empty");
 //
-//        String s2 = os2.map(s -> s.toString())
+//        String s2 = os2.map(String::toString)
 //                .orElse("Empty");
 //
 //        System.out.println(s1);
@@ -3388,8 +3389,214 @@
 ////}
 
 
+//import java.util.Optional;
+//
+//class Friend {
+//    String name;
+//    Company cmp;
+//
+//    public Friend(String n, Company c) {
+//        name = n;
+//        cmp = c;
+//    }
+//    public String getName() {
+//        return name;
+//    }
+//    public Company getCmp() {
+//        return cmp;
+//    }
+//}
+//
+//class Company {
+//    String cName;
+//    ContInfo cInfo;
+//
+//    public Company(String cn, ContInfo ci) {
+//        cName = cn;
+//        cInfo = ci;
+//    }
+//    public String getCName() {
+//        return cName;
+//    }
+//    public ContInfo getCInfo() {
+//        return cInfo;
+//    }
+//}
+//
+//class ContInfo {
+//    String phone;
+//    String adrs;
+//
+//    public ContInfo(String ph, String ad) {
+//        phone = ph;
+//        adrs = ad;
+//    }
+//    public String getPhone() {
+//        return phone;
+//    }
+//    public String getAdrs() {
+//        return adrs;
+//    }
+//}
+//
+//class NullPointerCaseStudy2 {
+//    public static void showCompAddr(Optional<Friend> f) {
+//        String addr = f.map(Friend::getCmp)
+//                .map(Company::getCInfo)
+//                .map(ContInfo::getAdrs)
+//                .orElse("There's no address information.");
+//
+//        System.out.println(addr);
+//    }
+//
+//    public static void main(String[] args) {
+//        ContInfo ci = new ContInfo("321-444-577", "Republic of Korea");
+//        Company cp = new Company("YaHo Co., Ltd.", ci);
+//        Friend frn = new Friend("LEE SU", cp);
+//        showCompAddr(Optional.of(frn));
+//    }
+//}
 
 
+//import java.util.Optional;
+//
+//class OptionalFlatMap {
+//    public static void main(String[] args) {
+//        Optional<String> os1 = Optional.of("Optional String");
+//        Optional<String> os2 = os1.map(String::toUpperCase);
+//        System.out.println(os2.get());
+//
+//        Optional<String> os3 = os1.flatMap(s -> Optional.of(s.toLowerCase()));
+//        System.out.println(os3.get());
+//    }
+//}
+
+
+//import java.util.Optional;
+//
+//class ContInfo {
+//    Optional<String> phone;
+//    Optional<String> adrs;
+//
+//    public ContInfo(Optional<String> ph, Optional<String> ad) {
+//        phone = ph;
+//        adrs = ad;
+//    }
+//    public Optional<String> getPhone() {
+//        return phone;
+//    }
+//    public Optional<String> getAdrs() {
+//        return adrs;
+//    }
+//}
+//
+//class FlatMapElseOptional {
+//    public static void main(String[] args) {
+//        Optional<ContInfo> ci = Optional.of(
+//                new ContInfo(Optional.ofNullable(null), Optional.of("Republic of Korea"))
+//        );
+//
+//        String phone = ci.flatMap(ContInfo::getPhone)
+//                .orElse("There is no phone number.");
+//        String addr = ci.flatMap(ContInfo::getAdrs)
+//                .orElse("There is no address.");
+//        System.out.println(phone);
+//        System.out.println(addr);
+//    }
+//}
+
+
+//import java.util.Optional;
+//
+//class Friend {
+//    String name;
+//    Optional<Company> cmp;
+//
+//    public Friend(String n, Optional<Company> c) {
+//        name = n;
+//        cmp = c;
+//    }
+//    public String getName() {
+//        return name;
+//    }
+//    public Optional<Company> getCmp() {
+//        return cmp;
+//    }
+//}
+//
+//class Company {
+//    String cName;
+//    Optional<ContInfo> cInfo;
+//
+//    public Company(String cn, Optional<ContInfo> ci) {
+//        cName = cn;
+//        cInfo = ci;
+//    }
+//    public String getCName() {
+//        return cName;
+//    }
+//    public Optional<ContInfo> getCInfo() {
+//        return cInfo;
+//    }
+//}
+//
+//class ContInfo {
+//    Optional<String> phone;
+//    Optional<String> adrs;
+//
+//    public ContInfo(Optional<String> ph, Optional<String> ad) {
+//        phone = ph;
+//        adrs = ad;
+//    }
+//    public Optional<String> getPhone() {
+//        return phone;
+//    }
+//    public Optional<String> getAdrs() {
+//        return adrs;
+//    }
+//}
+//
+//class NullPointerCaseStudy3 {
+//    public static void showCompAddr(Optional<Friend> f) {
+//        String addr = f.flatMap(Friend::getCmp)
+//                .flatMap(Company::getCInfo)
+//                .flatMap(ContInfo::getAdrs)
+//                .orElse("There's no address information.");
+//
+//        System.out.println(addr);
+//    }
+//
+//    public static void main(String[] args) {
+//        Optional<ContInfo> ci = Optional.of(
+//                new ContInfo(Optional.ofNullable(null), Optional.of("Republic of Korea"))
+//        );
+//        Optional<Company> cp = Optional.of(new Company("YaHo Co., Ltd.", ci));
+//        Optional<Friend> frn = Optional.of(new Friend("LEE SU", cp));
+//        showCompAddr(frn);
+//    }
+//}
+
+
+import java.util.OptionalInt;
+
+class OptionalBase {
+    public static void main(String[] args) {
+        OptionalInt oi1 = OptionalInt.of(3);
+        OptionalInt oi2 = OptionalInt.empty();
+
+        System.out.print("[Step 1.] : ");
+        oi1.ifPresent(i -> System.out.print(i + "\t"));
+        oi2.ifPresent(i -> System.out.print(i));
+        System.out.println();
+
+        System.out.print("[Step 2.] : ");
+        System.out.print(oi1.orElse(100) + "\t");
+        System.out.print(oi2.orElse(100) + "\t");
+        System.out.println();
+    }
+}
+
+// p.782
 
 
 
