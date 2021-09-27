@@ -3090,31 +3090,305 @@
 //}
 
 
-import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.function.Consumer;
-
-class JustSort {
-    public void sort(List<?> lst) {
-        Collections.reverse(lst);
-    }
-}
-
-class ArrangeList3 {
-    public static void main(String[] args) {
-        List<Integer> ls = Arrays.asList(1, 3, 5, 7, 9);
-        ls = new ArrayList<>(ls);
-        JustSort js = new JustSort();
-
-        Consumer<List<Integer>> c = e -> js.sort(e);
-        c.accept(ls);
-        System.out.println(ls);
-    }
-}
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.function.Consumer;
+//
+//class JustSort {
+//    public void sort(List<?> lst) {
+//        Collections.reverse(lst);
+//    }
+//}
+//
+//class ArrangeList3 {
+//    public static void main(String[] args) {
+//        List<Integer> ls = Arrays.asList(1, 3, 5, 7, 9);
+//        ls = new ArrayList<>(ls);
+//        JustSort js = new JustSort();
+//
+//        Consumer<List<Integer>> c = js::sort;
+//        c.accept(ls);
+//        System.out.println(ls);
+//    }
+//}
 
 // p.696
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.function.Consumer;
+//
+//class JustSort {
+//    public void sort(List<?> lst) {
+//        Collections.reverse(lst);
+//    }
+//}
+//
+//class ArrangeList4 {
+//    public static void main(String[] args) {
+//        List<Integer> ls = Arrays.asList(1, 3, 5, 7, 9);
+//        ls = new ArrayList<>(ls);
+//        JustSort js = new JustSort();
+//
+//        Consumer<List<Integer>> c = js::sort;
+//        c.accept(ls);
+//        System.out.println(ls);
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//
+//class ForEachDemo {
+//    public static void main(String[] args) {
+//        List<String> ls = Arrays.asList("Box", "Robot");
+//        ls.forEach(s -> System.out.println(s));
+//        ls.forEach(System.out::println);
+//    }
+//}
+
+
+//import java.util.function.ToIntBiFunction;
+//
+//class IBox {
+//    private int n;
+//    public IBox(int i) {n=i;}
+//    public int larger(IBox b) {
+//        if(n > b.n)
+//            return n;
+//        else
+//            return b.n;
+//    }
+//}
+//
+//class NoObjectMethodRef {
+//    public static void main(String[] args) {
+//        IBox ib1 = new IBox(5);
+//        IBox ib2 = new IBox(7);
+//
+//        ToIntBiFunction<IBox, IBox> bf = (b1, b2) -> b1.larger(b2);
+//        int bigNum = bf.applyAsInt(ib1, ib2);
+//        System.out.println(bigNum);
+//    }
+//}
+
+
+//import java.util.function.Function;
+//
+//class StringMaker {
+//    public static void main(String[] args) {
+//        Function<char[], String> f = ar -> {
+//            return new String(ar);
+//        };
+//
+//        char[] src = {'R', 'o', 'b', 'o', 't'};
+//        String str = f.apply(src);
+//        System.out.println(str);
+//    }
+//}
+
+
+//class Friend {
+//    String name;
+//    Company cmp;
+//
+//    public Friend(String n, Company c) {
+//        name = n;
+//        cmp = c;
+//    }
+//    public String getName() {
+//        return name;
+//    }
+//    public Company getCmp() {
+//        return cmp;
+//    }
+//}
+//
+//class Company {
+//    String cName;
+//    ContInfo cInfo;
+//
+//    public Company(String cn, ContInfo ci) {
+//        cName = cn;
+//        cInfo = ci;
+//    }
+//    public String getCName() {
+//        return cName;
+//    }
+//    public ContInfo getCInfo() {
+//        return cInfo;
+//    }
+//}
+//
+//class ContInfo {
+//    String phone;
+//    String adrs;
+//
+//    public ContInfo(String ph, String ad) {
+//        phone = ph;
+//        adrs = ad;
+//    }
+//    public String getPhone() {
+//        return phone;
+//    }
+//    public String getAdrs() {
+//        return adrs;
+//    }
+//}
+//
+//class NullPointerCaseStudy {
+//    public static void showCompAddr(Friend f) {
+//        String addr = null;
+//
+//        if(f != null) {
+//            Company com = f.getCmp();
+//            if(com != null) {
+//                ContInfo info = com.getCInfo();
+//                if(info != null)
+//                    addr = info.getAdrs();
+//            }
+//        }
+//
+//        if(addr != null)
+//            System.out.println(addr);
+//        else
+//            System.out.println("There's no address information");
+//    }
+//
+//    public static void main(String[] args) {
+//        ContInfo ci = new ContInfo("321-444-577", "Republic of Korea");
+//        Company cp = new Company("Yaho Co., Ltd.", ci);
+//        Friend frn = new Friend("LEE SU", cp);
+//        showCompAddr(frn);
+//    }
+//}
+
+
+//import java.util.Optional;
+//
+//class StringOptional1 {
+//    public static void main(String[] args) {
+//        Optional<String> os1 = Optional.of(new String("Toy1"));
+//        Optional<String> os2 = Optional.ofNullable(new String("Toy2"));
+//
+//        os1.ifPresent(s -> System.out.println(s));
+//        os2.ifPresent(System.out::println);
+//    }
+//}
+
+
+//class ContInfo {
+//    String phone;
+//    String adrs;
+//
+//    public ContInfo(String ph, String ad) {
+//        phone = ph;
+//        adrs = ad;
+//    }
+//    public String getPhone() {
+//        return phone;
+//    }
+//    public String getAdrs() {
+//        return adrs;
+//    }
+//}
+//
+//class IfElseOptional {
+//    public static void main(String[] args) {
+//        ContInfo ci = new ContInfo(null, "Republic of Korea");
+//        String phone;
+//        String addr;
+//
+//        if(ci.phone != null)
+//            phone = ci.getPhone();
+//        else
+//            phone = "There is no phone number.";
+//
+//        if(ci.adrs != null)
+//            addr = ci.getAdrs();
+//        else
+//            addr = "There is no address.";
+//
+//        System.out.println(phone);
+//        System.out.println(addr);
+//    }
+//}
+
+
+//import java.util.Optional;
+//
+//class OptionalMap {
+//    public static void main(String[] args) {
+//        Optional<String> os1 = Optional.of("Optional String");
+//        Optional<String> os2 = os1.map(s -> s.toUpperCase());
+//        System.out.println(os2.get());
+//
+//        Optional<String> os3 = os1.map(s -> s.replace(' ', '_'))
+//                .map(s-> s.toLowerCase());
+//        System.out.println(os3.get());
+//    }
+//}
+
+
+//import java.util.Optional;
+//
+//class OptionalOrElse {
+//    public static void main(String[] args) {
+//        Optional<String> os1 = Optional.empty();
+//        Optional<String> os2 = Optional.of("So basic");
+//
+//        String s1 = os1.map(s -> s.toString())
+//                .orElse("Empty");
+//
+//        String s2 = os2.map(s -> s.toString())
+//                .orElse("Empty");
+//
+//        System.out.println(s1);
+//        System.out.println(s2);
+//    }
+//}
+
+
+//import java.util.Optional;
+////
+////class ContInfo {
+////    String phone;
+////    String adrs;
+////
+////    public ContInfo(String ph, String ad) {
+////        phone = ph;
+////        adrs = ad;
+////    }
+////    public String getPhone() {
+////        return phone;
+////    }
+////    public String getAdrs() {
+////        return adrs;
+////    }
+////}
+////
+////class MapElseOptional {
+////    public static void main(String[] args) {
+////        Optional<ContInfo> ci = Optional.of(new ContInfo(null, "Republic of Korea"));
+////
+////        String phone = ci.map(c -> c.getPhone())
+////                .orElse("There is no phone number.");
+////        String addr = ci.map(c -> c.getAdrs())
+////                .orElse("There is no address");
+////
+////        System.out.println(phone);
+////        System.out.println(addr);
+////    }
+////}
+
+
+
 
 
 
