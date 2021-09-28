@@ -3586,7 +3586,7 @@ class OptionalBase {
 
         System.out.print("[Step 1.] : ");
         oi1.ifPresent(i -> System.out.print(i + "\t"));
-        oi2.ifPresent(i -> System.out.print(i));
+        oi2.ifPresent(System.out::print);
         System.out.println();
 
         System.out.print("[Step 2.] : ");
@@ -3596,7 +3596,8 @@ class OptionalBase {
     }
 }
 
-// p.782
+// *** The end of this practice ***
+// 28, Sept, 2021
 
 
 
