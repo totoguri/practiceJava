@@ -222,44 +222,166 @@
 //}
 
 
-class Man {
-    String name;
-
-    public Man(String name) {
-        this.name = name;
-    }
-
-    public void tellYourName() {
-        System.out.println("My name is " + name);
-    }
-}
-
-class BusinessMan extends Man {
-    String company;
-    String position;
-
-    public BusinessMan(String name, String company, String position) {
-        super(name);
-        this.company = company;
-        this.position = position;
-    }
-
-    public void tellYourInfo() {
-        System.out.println("My company is " + company);
-        System.out.println("My position is " + position);
-        tellYourName();
-    }
-}
-
-class MyBusinessMan {
-    public static void main(String[] args) {
-        BusinessMan man = new BusinessMan("YOON", "Hybrid ELD", "Staff Eng.");
-        man.tellYourInfo();
-    }
-}
+//class Man {
+//    String name;
+//
+//    public Man(String name) {
+//        this.name = name;
+//    }
+//
+//    public void tellYourName() {
+//        System.out.println("My name is " + name);
+//    }
+//}
+//
+//class BusinessMan extends Man {
+//    String company;
+//    String position;
+//
+//    public BusinessMan(String name, String company, String position) {
+//        super(name);
+//        this.company = company;
+//        this.position = position;
+//    }
+//
+//    public void tellYourInfo() {
+//        System.out.println("My company is " + company);
+//        System.out.println("My position is " + position);
+//        tellYourName();
+//    }
+//}
+//
+//class MyBusinessMan {
+//    public static void main(String[] args) {
+//        BusinessMan man = new BusinessMan("YOON", "Hybrid ELD", "Staff Eng.");
+//        man.tellYourInfo();
+//    }
+//}
 
 // p,350
 // refresh
+
+
+//import java.util.stream.IntStream;
+//
+//class Friend {
+//    protected String name;
+//    protected String phone;
+//
+//    public Friend(String name, String phone) {
+//        this.name = name;
+//        this.phone = phone;
+//    }
+//    public void showInfo() {
+//        System.out.println("Name: " + this.name);
+//        System.out.println("Phone: " + this.phone);
+//    }
+//}
+//
+//class UnivFriend extends Friend {
+//    private final String major;
+//
+//    public UnivFriend(String name, String major, String phone) {
+//        super(name, phone);
+//        this.major = major;
+//    }
+//    public void showInfo() {
+//        super.showInfo();
+//        System.out.println("Major: " + major);
+//    }
+//}
+//
+//class CompFriend extends Friend {
+//    private final String department;
+//
+//    public CompFriend(String name, String department, String phone) {
+//        super(name, phone);
+//        this.department = department;
+//    }
+//    public void showInfo() {
+//        super.showInfo();
+//        System.out.println("Department: " + department);
+//    }
+//}
+//
+//class MyFriend2 {
+//    public static void main(String[] args) {
+//        Friend[] friends = new Friend[10];
+//        int count = 0;
+//
+//        friends[count++] = new UnivFriend("Lee", "Computer", "010-4545-4323");
+//        friends[count++] = new UnivFriend("Seo", "Electronics", "010-2232-3434");
+//        friends[count++] = new CompFriend("Yoon", "R&D 1", "02-2223-2313");
+//        friends[count++] = new CompFriend("Park", "R&D 2", "032-1212-1111");
+//
+//        IntStream.range(0, count).forEach(i -> {
+//            friends[i].showInfo();
+//            System.out.println();
+//        });
+//    }
+//}
+
+
+//class Cake {
+//    public String toString() {
+//        System.out.println(super.toString());
+//        return "My birthday cake";
+//    }
+//}
+//
+//class CheeseCake extends Cake {
+//    public String toString() {
+//        return "My birthday cheese cake";
+//    }
+//}
+//
+//class OverridingToString {
+//    public static void main(String[] args) {
+//        Cake c1 = new Cake();
+//        Cake c2 = new CheeseCake();
+//
+//        System.out.println(c1);
+//        System.out.println();
+//
+//        System.out.println(c2);
+//    }
+//}
+
+
+interface Printable {
+    public void print(String doc);
+}
+
+class SPrinterDriver implements Printable {
+    @Override
+    public void print(String doc) {
+        System.out.println("From Samsung printer");
+        System.out.println(doc);
+    }
+}
+
+class LPrinterDriver implements Printable {
+    @Override
+    public void print(String doc) {
+        System.out.println("From LG printer");
+        System.out.println(doc);
+    }
+}
+
+class PrinterDriver {
+    public static void main(String[] args) {
+        String myDoc = "This is a report about...";
+
+        Printable prn = new SPrinterDriver();
+        prn.print(myDoc);
+        System.out.println();
+
+        prn = new LPrinterDriver();
+        prn.print(myDoc);
+    }
+}
+
+// p.481
 
 
 
