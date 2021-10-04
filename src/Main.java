@@ -3663,21 +3663,275 @@
 //}
 
 
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return ob;
+//    }
+//}
+//
+//class Primitives {
+//    public static void main(String[] args) {
+//        Box<Integer> iBox = new Box<Integer>();
+//        iBox.set(125);
+//        int num = iBox.get();
+//        System.out.println(num);
+//    }
+//}
 
 
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxinBox {
+//    public static void main(String[] args) {
+//        Box<String> sBox = new Box<>();
+//        sBox.set("I am so happy.");
+//
+//        Box<Box<String>> wBox = new Box<>();
+//        wBox.set(sBox);
+//
+//        Box<Box<Box<String>>> zBox = new Box<>();
+//        zBox.set(wBox);
+//
+//        System.out.println(zBox.get().get().get());
+//    }
+//}
 
 
+//interface Eatable {
+//    public String eat();
+//}
+//
+//class Apple implements Eatable {
+//    public String toString() {
+//        return "I am an apple.";
+//    }
+//
+//    @Override
+//    public String eat() {
+//        return "It tastes so good";
+//    }
+//}
+//
+//class Box<T extends Eatable> {
+//    T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        System.out.println(ob.eat());
+//        return ob;
+//    }
+//}
+//
+//class BoundedInter {
+//    public static void main(String[] args) {
+//        Box<Apple> box = new Box<>();
+//        box.set(new Apple());
+//
+//        Apple ap = box.get();
+//        System.out.println(ap);
+//    }
+//}
 
 
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class BoxFactory {
+//    public static <T> Box<T> makeBox(T o) {
+//        Box<T> box = new Box<>();
+//        box.set(o);
+//        return box;
+//    }
+//}
+//
+//class GenericMethodBoxMaker {
+//    public static void main(String[] args) {
+//        Box<String> sBox = BoxFactory.makeBox("Sweet");
+//        System.out.println(sBox.get());
+//
+//        Box<Double> dBox = BoxFactory.makeBox(7.59);
+//        System.out.println(dBox.get());
+//    }
+//}
 
 
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class Unboxer {
+//    public static <T> T openBox(Box<T> box) {
+//        return box.get();
+//    }
+//}
+//
+//class GenericMethodBoxMaker2 {
+//    public static void main(String[] args) {
+//        Box<String> box = new Box<>();
+//        box.set("My Generic Method");
+//
+//        String str = Unboxer.openBox(box);
+//        System.out.println(str);
+//    }
+//}
 
 
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//
+//    public T get() {
+//        return ob;
+//    }
+//}
+//
+//class BoxFactory {
+//    public static <T extends Number> Box<T> makeBox(T o) {
+//        Box<T> box = new Box<>();
+//        box.set(o);
+//
+//        System.out.println("Boxed data: " + o.intValue());
+//        return box;
+//    }
+//}
+//
+//class Unboxer {
+//    public static <T extends Number> T openBox(Box<T> box) {
+//        System.out.println("Unboxed data: " + box.get().intValue());
+//        return box.get();
+//    }
+//}
+//
+//class BoundedGenericMethod {
+//    public static void main(String[] args) {
+//        Box<Integer> sBox = BoxFactory.makeBox(5959);
+//        int n = Unboxer.openBox(sBox);
+//        System.out.println("Returned data: " + n);
+//    }
+//}
+
+// p.510
 
 
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {
+//        ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class BoxHandler {
+//    public static void outBox(Box<? extends Toy> box) {
+//        Toy t = box.get();
+//        System.out.println(t);
+//    }
+//
+//    public static void inBox(Box<Toy> box, Toy n) {
+//        box.set(n);
+//    }
+//}
+//
+//class BoundedWildCardUsage {
+//    public static void main(String[] args) {
+//        Box<Toy> box = new Box<>();
+//        BoxHandler.inBox(box, new Toy());
+//        BoxHandler.outBox(box);
+//    }
+//}
 
 
+class Box<T> {
+    private T ob;
+    public void set(T o) {
+        ob = o;
+    }
+    public T get() {
+        return ob;
+    }
+}
 
+class Toy {
+    @Override
+    public String toString() {
+        return "I am a Toy";
+    }
+}
+
+class Robot {
+    @Override
+    public String toString() {
+        return "I am a Robot";
+    }
+}
+
+class BoxHandler {
+    public static <T> void outBox(Box<? extends T> box) {
+        T t = box.get();
+        System.out.println(t);
+    }
+
+    public static <T> void inBox(Box<? super T> box, T n) {
+        box.set(n);
+    }
+}
+
+class BoundedWildCardGenericMethod {
+    public static void main(String[] args) {
+        Box<Toy> tBox = new Box<>();
+        BoxHandler.inBox(tBox, new Toy());
+        BoxHandler.outBox(tBox);
+
+        Box<Robot> rBox = new Box<>();
+        BoxHandler.inBox(rBox, new Robot());
+        BoxHandler.outBox(rBox);
+    }
+}
+
+// p.538
 
 
 
