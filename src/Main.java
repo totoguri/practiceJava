@@ -3597,49 +3597,70 @@
 //}
 
 
-class Apple {
-    public String toString() {
-        return "I am an apple.";
-    }
-}
-
-class Orange {
-    public String toString() {
-        return "I am an orange";
-    }
-}
-
-class Box<T> {
-    private T ob;
-
-    public void set(T o) {
-        this.ob = o;
-    }
-    public T get() {
-        return this.ob;
-    }
-}
-
-class FruitAndBox_Generic {
-    public static void main(String[] args) {
-        Box<Apple> aBox = new Box<Apple>();
-        Box<Orange> oBox = new Box<>();
-
-        aBox.set(new Apple());
-        oBox.set(new Orange());
-
-        Apple ap = aBox.get();
-        Orange og = oBox.get();
-
-        System.out.println(ap);
-        System.out.println(og);
-    }
-}
+//class Apple {
+//    public String toString() {
+//        return "I am an apple.";
+//    }
+//}
+//
+//class Orange {
+//    public String toString() {
+//        return "I am an orange";
+//    }
+//}
+//
+//class Box<T> {
+//    private T ob;
+//
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class FruitAndBox_Generic {
+//    public static void main(String[] args) {
+//        Box<Apple> aBox = new Box<Apple>();
+//        Box<Orange> oBox = new Box<>();
+//
+//        aBox.set(new Apple());
+//        oBox.set(new Orange());
+//
+//        Apple ap = aBox.get();
+//        Orange og = oBox.get();
+//
+//        System.out.println(ap);
+//        System.out.println(og);
+//    }
+//}
 
 // p.490
 
 
-
+//class DBox<L, R> {
+//    private L left;
+//    private R right;
+//
+//    public void set(L o, R r) {
+//        this.left = o;
+//        this.right = r;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return left + " & " + right;
+//    }
+//}
+//
+//class MultiTypeParam {
+//    public static void main(String[] args) {
+//        DBox<String, Integer> box = new DBox<String, Integer>();
+//        box.set("Apple", 25);
+//        System.out.println(box);
+//    }
+//}
 
 
 
