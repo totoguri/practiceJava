@@ -3884,54 +3884,566 @@
 //}
 
 
-class Box<T> {
-    private T ob;
-    public void set(T o) {
-        ob = o;
-    }
-    public T get() {
-        return ob;
-    }
-}
-
-class Toy {
-    @Override
-    public String toString() {
-        return "I am a Toy";
-    }
-}
-
-class Robot {
-    @Override
-    public String toString() {
-        return "I am a Robot";
-    }
-}
-
-class BoxHandler {
-    public static <T> void outBox(Box<? extends T> box) {
-        T t = box.get();
-        System.out.println(t);
-    }
-
-    public static <T> void inBox(Box<? super T> box, T n) {
-        box.set(n);
-    }
-}
-
-class BoundedWildCardGenericMethod {
-    public static void main(String[] args) {
-        Box<Toy> tBox = new Box<>();
-        BoxHandler.inBox(tBox, new Toy());
-        BoxHandler.outBox(tBox);
-
-        Box<Robot> rBox = new Box<>();
-        BoxHandler.inBox(rBox, new Robot());
-        BoxHandler.outBox(rBox);
-    }
-}
+//class Box<T> {
+//    private T ob;
+//    public void set(T o) {
+//        ob = o;
+//    }
+//    public T get() {
+//        return ob;
+//    }
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class Robot {
+//    @Override
+//    public String toString() {
+//        return "I am a Robot";
+//    }
+//}
+//
+//class BoxHandler {
+//    public static <T> void outBox(Box<? extends T> box) {
+//        T t = box.get();
+//        System.out.println(t);
+//    }
+//
+//    public static <T> void inBox(Box<? super T> box, T n) {
+//        box.set(n);
+//    }
+//}
+//
+//class BoundedWildCardGenericMethod {
+//    public static void main(String[] args) {
+//        Box<Toy> tBox = new Box<>();
+//        BoxHandler.inBox(tBox, new Toy());
+//        BoxHandler.outBox(tBox);
+//
+//        Box<Robot> rBox = new Box<>();
+//        BoxHandler.inBox(rBox, new Robot());
+//        BoxHandler.outBox(rBox);
+//    }
+//}
 
 // p.538
+
+
+//interface Getable<T> {
+//    T get();
+//}
+//
+//class Box<T> implements Getable<T> {
+//    private T ob;
+//    public void set(T o) {
+//        this.ob = o;
+//    }
+//
+//    @Override
+//    public T get() {
+//        return this.ob;
+//    }
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class GetableGenericInterface {
+//    public static void main(String[] args) {
+//        Box<Toy> box = new Box<>();
+//        box.set(new Toy());
+//
+//        Getable<Toy> gt = box;
+//        System.out.println(gt.get());
+//    }
+//}
+
+
+//interface Getable<T> {
+//    public T get();
+//}
+//
+//class Box<T> implements Getable<String> {
+//    private T ob;
+//    public void set(T o) {
+//        ob = o;
+//    }
+//
+//    @Override
+//    public String get() {
+//        return ob.toString();
+//    }
+//}
+//
+//class Toy {
+//    @Override
+//    public String toString() {
+//        return "I am a Toy";
+//    }
+//}
+//
+//class GetableGenericInterface2 {
+//    public static void main(String[] args) {
+//        Box<Toy> box = new Box<>();
+//        box.set(new Toy());
+//
+//        Getable<String> gt = box;
+//        System.out.println(gt.get());
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//
+//class ArrayListCollection {
+//    public static void main(String[] args) {
+//        List<String> list = new ArrayList<>();
+//
+//        list.add("Toy");
+//        list.add("Box");
+//        list.add("Robot");
+//
+//        list.stream().map(s -> s + '\t').forEach(System.out::print);
+//        System.out.println();
+//
+//        list.remove(0);
+//
+//        list.stream().map(s -> s + '\t').forEach(System.out::print);
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.LinkedList;
+//import java.util.Iterator;
+//
+//class IteratorCollection {
+//    public static void main(String[] args) {
+//        List<String> list = new LinkedList<>();
+//        list.add("Toy");
+//        list.add("Box");
+//        list.add("Robot");
+//        list.add("Box");
+//
+//        Iterator<String> itr = list.iterator();
+//
+//        while(itr.hasNext())
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//
+//        itr = list.iterator();
+//
+//        String str;
+//        while(itr.hasNext()) {
+//            str = itr.next();
+//            if(str.equals("Toy"))
+//                itr.remove();
+//        }
+//
+//        itr = list.iterator();
+//
+//        while(itr.hasNext())
+//            System.out.print(itr.next() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.*;
+//
+//class AsListCollection {
+//    public static void main(String[] args) {
+//        List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box");
+//        list = new ArrayList<>(list);
+//
+//        for (String value : list) System.out.print(value + '\t');
+//        System.out.println();
+//
+//        list = new LinkedList<>(list);
+//
+//        list.stream().map(s -> s + '\t').forEach(System.out::print);
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.Iterator;
+//import java.util.LinkedList;
+//
+//class PrimitiveCollection {
+//    public static void main(String[] args) {
+//        LinkedList<Integer> list = new LinkedList<>();
+//        list.add(10); list.add(20); list.add(30);
+//
+//        int n;
+//        for(Iterator<Integer> itr = list.iterator(); itr.hasNext();) {
+//            n = itr.next();
+//            System.out.print(n + "\t");
+//        }
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.HashSet;
+//
+//class Num {
+//    private int num;
+//    public Num(int n) {num = n;}
+//
+//    @Override
+//    public String toString() {
+//        return String.valueOf(num);
+//    }
+//}
+//
+//class HashSetEqualityOne {
+//    public static void main(String[] args) {
+//        HashSet<Num> set = new HashSet<>();
+//        set.add(new Num(7799));
+//        set.add(new Num(9955));
+//        set.add(new Num(7799));
+//        System.out.println("Num of Instances: " + set.size());
+//
+//        set.stream().map(n -> n.toString() + '\t').forEach(System.out::print);
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.HashSet;
+//
+//class Num {
+//    private int num;
+//    public Num(int n) {
+//        num = n;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return String.valueOf(num);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return num % 3;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if(num == ((Num)obj).num)
+//            return true;
+//        else
+//            return false;
+//    }
+//}
+//
+//class HashSetEqualityTwo {
+//    public static void main(String[] args) {
+//        HashSet<Num> set = new HashSet<>();
+//        set.add(new Num(7799));
+//        set.add(new Num(9955));
+//        set.add(new Num(7799));
+//        System.out.println("Num of Instances : " + set.size());
+//
+//        set.stream().map(n -> n.toString() + '\t').forEach(System.out::print);
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.HashSet;
+//
+//class Car {
+//    private String model;
+//    private String color;
+//
+//    public Car(String m, String c) {
+//        model = m;
+//        color = c;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return model + " : " + color;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return (model.hashCode() + color.hashCode()) / 2;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        String m = ((Car)obj).model;
+//        String c = ((Car)obj).color;
+//
+//        if(model.equals(m) && color.equals(c))
+//            return true;
+//        else
+//            return false;
+//    }
+//}
+//
+//class HowHashCode {
+//    public static void main(String[] args) {
+//        HashSet<Car> set = new HashSet<>();
+//        set.add(new Car("HY_MD_301", "RED"));
+//        set.add(new Car("HY_MD_301", "BLACK"));
+//        set.add(new Car("HY_MD_301", "RED"));
+//        set.add(new Car("HY_MD_302", "WHITE"));
+//        set.add(new Car("HY_MD_301", "BLACK"));
+//        System.out.println("Num of Instances : " + set.size());
+//
+//        for(Car car : set)
+//            System.out.println(car.toString() + '\t');
+//    }
+//}
+
+
+//import java.util.TreeSet;
+//import java.util.Iterator;
+//
+//class Person implements Comparable<Person> {
+//    private String name;
+//    private int age;
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return name + " : " + age;
+//    }
+//
+//    @Override
+//    public int compareTo(Person p) {
+//        return this.age - p.age;
+//    }
+//}
+//
+//class ComparablePerson {
+//    public static void main(String[] args) {
+//        TreeSet<Person> tree = new TreeSet<>();
+//        tree.add(new Person("YOON", 37));
+//        tree.add(new Person("HONG", 53));
+//        tree.add(new Person("PARK", 22));
+//
+//        tree.forEach(System.out::println);
+//    }
+//}
+
+
+//import java.util.TreeSet;
+//import java.util.Iterator;
+//import java.util.Comparator;
+//
+//class Person implements Comparable<Person> {
+//    String name;
+//    int age;
+//
+//    public Person(String name, int age) {
+//        this.name = name;
+//        this.age = age;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return name + " : " + age;
+//    }
+//
+//    @Override
+//    public int compareTo(Person p) {
+//        return this.age - p.age;
+//    }
+//}
+//
+//class PersonComparator implements Comparator<Person> {
+//    public int compare(Person p1, Person p2) {
+//        return p2.age - p1.age;
+//    }
+//}
+//
+//class ComparatorPerson {
+//    public static void main(String[] args) {
+//        TreeSet<Person> tree = new TreeSet<>(new PersonComparator());
+//        tree.add(new Person("YOON", 37));
+//        tree.add(new Person("HONG", 53));
+//        tree.add(new Person("PARK", 22));
+//
+//        for(Person p : tree)
+//            System.out.println(p);
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.HashSet;
+//
+//class ConvertCollection {
+//    public static void main(String[] args) {
+//        List<String> lst = Arrays.asList("Box", "Toy", "Box", "Toy");
+//        ArrayList<String> list = new ArrayList<>(lst);
+//
+//        for(String s : list)
+//            System.out.print(s.toString() + '\t');
+//        System.out.println();
+//
+//        HashSet<String> set = new HashSet<>(list);
+//
+//        list = new ArrayList<>(set);
+//
+//        for(String s : list)
+//            System.out.print(s.toString() + '\t');
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.Queue;
+//import java.util.LinkedList;
+//
+//class LinkedListQueue {
+//    public static void main(String[] args) {
+//        Queue<String> que = new LinkedList<>();
+//        que.offer("Box");
+//        que.offer("Toy");
+//        que.offer("Robot");
+//
+//        System.out.println("next: " + que.peek());
+//        System.out.println("next: " + que.peek());
+//        System.out.println("next: " + que.peek());
+//        System.out.println("next: " + que.peek());
+//
+//    }
+//}
+
+
+//import java.util.Deque;
+//import java.util.ArrayDeque;
+//
+//interface DIStack<E> {
+//    public boolean push(E item);
+//    public E pop();
+//}
+//
+//class DCStack<E> implements DIStack<E> {
+//    private Deque<E> deq;
+//
+//    public DCStack(Deque<E> d) {
+//        deq = d;
+//    }
+//    public boolean push(E item) {
+//        return deq.offerFirst(item);
+//    }
+//    public E pop() {
+//        return deq.pollFirst();
+//    }
+//}
+//
+//class DefineStack {
+//    public static void main(String[] args) {
+//        DIStack<String> stk = new DCStack<>(new ArrayDeque<String>());
+//
+//        stk.push("1.Box");
+//        stk.push("2.Toy");
+//        stk.push("3.Robot");
+//
+//        System.out.println(stk.pop());
+//        System.out.println(stk.pop());
+//        System.out.println(stk.pop());
+//    }
+//}
+
+
+//import java.util.HashMap;
+//
+//class HashMapCollection {
+//    public static void main(String[] args) {
+//        HashMap<Integer, String> map = new HashMap<>();
+//
+//        map.put(45, "Brown");
+//        map.put(37, "James");
+//        map.put(23, "Martin");
+//
+//        System.out.println("No.23 : " + map.get(23));
+//        System.out.println("No.37 : " + map.get(37));
+//        System.out.println("No.45 : " + map.get(45));
+//        System.out.println();
+//
+//        map.remove(37);
+//
+//        System.out.println("No.37: " + map.get(37));
+//    }
+//}
+
+
+//import java.util.HashMap;
+//import java.util.Set;
+//
+//class HashMapIteration {
+//    public static void main(String[] args) {
+//        HashMap<Integer, String> map = new HashMap<>();
+//        map.put(45, "Brown");
+//        map.put(37, "James");
+//        map.put(23, "Martin");
+//
+//        Set<Integer> ks = map.keySet();
+//
+//        ks.stream().map(n -> n.toString() + '\t').forEach(System.out::print);
+//        System.out.println();
+//
+//        ks.stream().map(n -> map.get(n).toString() + '\t').forEach(System.out::print);
+//        System.out.println();
+//
+//        ks.stream().map(k -> map.get(k) + '\t').forEach(System.out::print);
+//        System.out.println();
+//    }
+//}
+
+
+//import java.util.TreeMap;
+//import java.util.Iterator;
+//import java.util.Set;
+//
+//class TreeMapIteration {
+//    public static void main(String[] args) {
+//        TreeMap<Integer, String> map = new TreeMap<>();
+//        map.put(45, "Brown");
+//        map.put(37, "James");
+//        map.put(23, "Martin");
+//
+//        Set<Integer> ks = map.keySet();
+//
+//        for(Integer n : ks)
+//            System.out.print(n.toString() + '\t');
+//        System.out.println();
+//
+//        for(Integer n : ks)
+//            System.out.print(map.get(n).toString() + '\t');
+//        System.out.println();
+//
+//        for(Iterator<Integer> itr = ks.iterator(); itr.hasNext();)
+//            System.out.print(map.get(itr.next()) + '\t');
+//        System.out.println();
+//    }
+//}
+
 
 
 
