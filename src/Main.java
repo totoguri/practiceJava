@@ -4445,8 +4445,71 @@
 //}
 
 
+// p.668
 
 
+//interface Calculate {
+//    int cal(int a, int b);
+//}
+//
+//class TwoParamAndReturn {
+//    public static void main(String[] args) {
+//        Calculate c;
+//        c = (a, b) -> {
+//            return a + b;
+//        };
+//        System.out.println(c.cal(4, 3));
+//
+//        c = (a, b) -> a + b;
+//        System.out.println(c.cal(4, 3));
+//    }
+//}
+
+
+//import java.util.Arrays;
+//
+//class MyFirstStream2 {
+//    public static void main(String[] args) {
+//        int[] ar = {1, 2, 3, 4, 5};
+//
+//        int sum = Arrays.stream(ar)
+//                .filter(n -> n%2 == 1)
+//                .sum();
+//        System.out.println(sum);
+//    }
+//}
+
+
+//import java.util.List;
+//import java.util.ArrayList;
+//
+//class ToyPriceInfo {
+//    private String model;
+//    private int price;
+//
+//    public ToyPriceInfo(String m, int p) {
+//        model = m;
+//        price = p;
+//    }
+//    public int getPrice() {
+//        return price;
+//    }
+//}
+//
+//class ToyStream {
+//    public static void main(String[] args) {
+//        List<ToyPriceInfo> ls = new ArrayList<>();
+//        ls.add(new ToyPriceInfo("GUN_LR_45", 200));
+//        ls.add(new ToyPriceInfo("TEDDY_BEAR_S_014", 350));
+//        ls.add(new ToyPriceInfo("CAR_TRANSFORM_VER_7719", 550));
+//
+//        int sum = ls.stream()
+//                .filter(p -> p.getPrice() < 500)
+//                .mapToInt(t -> t.getPrice())
+//                .sum();
+//        System.out.println("Sum = " + sum);
+//    }
+//}
 
 
 
